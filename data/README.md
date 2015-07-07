@@ -9,3 +9,9 @@ Se puede encontrar el artículo que acompaña estos datos aquí: http://www.enel
 + `migrantes_cobertura` - Porcentaje de area bajo "control efectivo total" por parte de agentes fronterizos de E.U., por año.
 
 **Fuentes:** http://fpc.state.gov/documents/organization/180681.pdf, entre otras (ver artículo).
+### visas
+Se puede encontrar el artículo que acompaña estos datos aquí: http://www.reporteindigo.com/indigonomics/apoyan-la-reforma-para-atraer-talento
+
++ `visas` - Días en los que se acaban las visas para trabajar en E.U., por año.
+
+**Fuente:** Costoms and Border Protection (CBP)
