@@ -1,4 +1,4 @@
-### Datos abiertos y scripts usados en proyectos personales y/o en blog www.enelmargen.org
+### Datos usados en proyectos personales y/o en blog www.enelmargen.org
 _______
 ### migrantes
 Se puede encontrar el artículo que acompaña estos datos aquí: http://www.enelmargen.org/2013/06/el-mito-de-la-frontera-descuidada.html
