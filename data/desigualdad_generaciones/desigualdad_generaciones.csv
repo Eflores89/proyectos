@@ -1,0 +1,37 @@
+EstudiosHijo,EstudiosPadre,Porcentaje
+Preparatoria,Profesional,38
+Preparatoria,Preparatoria,44
+Preparatoria,Secundaria ,44
+Preparatoria,Primaria,27
+Preparatoria,Primaria incompleta,22
+Preparatoria,Sin estudios,12
+Primaria,Profesional,0
+Primaria,Preparatoria,1
+Primaria,Secundaria ,7
+Primaria,Primaria,20
+Primaria,Primaria incompleta,28
+Primaria,Sin estudios,33
+Primaria incompleta,Profesional,0
+Primaria incompleta,Preparatoria,2
+Primaria incompleta,Secundaria ,1
+Primaria incompleta,Primaria,4
+Primaria incompleta,Primaria incompleta,12
+Primaria incompleta,Sin estudios,17
+Profesional,Profesional,59
+Profesional,Preparatoria,35
+Profesional,Secundaria ,20
+Profesional,Primaria,12
+Profesional,Primaria incompleta,7
+Profesional,Sin estudios,5
+Secundaria ,Profesional,3
+Secundaria ,Preparatoria,17
+Secundaria ,Secundaria ,27
+Secundaria ,Primaria,36
+Secundaria ,Primaria incompleta,29
+Secundaria ,Sin estudios,22
+Sin estudios,Profesional,0
+Sin estudios,Preparatoria,1
+Sin estudios,Secundaria ,1
+Sin estudios,Primaria,1
+Sin estudios,Primaria incompleta,2
+Sin estudios,Sin estudios,11
