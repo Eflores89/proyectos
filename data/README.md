@@ -14,4 +14,12 @@ Se puede encontrar el artículo que acompaña estos datos aquí: http://www.repo
 
 + `visas` - Días en los que se acaban las visas para trabajar en E.U., por año.
 
-**Fuente:** Costoms and Border Protection (CBP)
+**Fuente:** Customs and Border Protection (CBP)
+## investigacion usa
+Se puede encontrar el artículo que acompaña estos datos aquí:
+http://reporteindigo.com/indigonomics/por-curiosidad-vendran-mas-fondos
+
++ `investigacion_usa` - Porcentaje de fondos destinados a investigación en ciencias puras, por agencia durante el año fiscal 2012 en E.U.
++ `investigacion_nasa` - Millones de dólares destinados a ciencia y exploración espacial en la NASA. Años 2013 y 2014 son estimaciones.
+
+**Fuente:** Servicio de Investigación del Congreso de E.U.
