@@ -23,3 +23,9 @@ http://reporteindigo.com/indigonomics/por-curiosidad-vendran-mas-fondos
 + `investigacion_nasa` - Millones de dólares destinados a ciencia y exploración espacial en la NASA. Años 2013 y 2014 son estimaciones.
 
 **Fuente:** Servicio de Investigación del Congreso de E.U.
+### desigualdad generaciones
+Información recopilada de informes del Centro de Estudios Económicos Espinosa Yglesias sobre desigualdad intergeneracional. 
+
++ `desigualdad_generaciones` - Porcentaje de respondientes a estudio con estudios máximos correspondientes. Por ejemplo: 33% de los hijos de padres sin estudios solamente estudiaron hasta máximo primaria.
+
+**Fuente:** Centro de Estudios Económicos Espinosa Yglesias
