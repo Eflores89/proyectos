@@ -15,7 +15,7 @@ Se puede encontrar el artículo que acompaña estos datos aquí: http://www.repo
 + `visas` - Días en los que se acaban las visas para trabajar en E.U., por año.
 
 **Fuente:** Customs and Border Protection (CBP)
-## investigacion usa
+### investigacion usa
 Se puede encontrar el artículo que acompaña estos datos aquí:
 http://reporteindigo.com/indigonomics/por-curiosidad-vendran-mas-fondos
 
