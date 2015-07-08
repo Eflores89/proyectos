@@ -29,3 +29,33 @@ Información recopilada de informes del Centro de Estudios Económicos Espinosa 
 + `desigualdad_generaciones` - Porcentaje de respondientes a estudio con estudios máximos correspondientes. Por ejemplo: 33% de los hijos de padres sin estudios solamente estudiaron hasta máximo primaria.
 
 **Fuente:** Centro de Estudios Económicos Espinosa Yglesias
+### elecciones 2012 
+Se puede encontrar el artículo que acompaña estos datos aquí: http://www.enelmargen.org/2012/02/me-gusta-seguir-y-votar-la-primera.html
+
++ `elecciones_2012` - Likes en facebook y seguidores de twitter que mostraban los tres principales candidatos a la presidencia de México, de Julio 2011 a Enero 2012, por día.
+
+**Fuente:** Facebook, Twitter. Recopilado por Miguel Rodriguez.
+### nobel
+Se puede encontrar el artículo que acompaña estos datos aquí: http://www.enelmargen.org/2011/02/la-concentracion-del-conocimiento.html
+
++ `nobel` - Premios Nobel por principales países de origen (nacimiento de persona). Actualizado hasta Premio Nobel de Medicina del 2012. 
+
+**Fuente:** Sitio oficial premios Nobel
+### percepciones crisis
+Gráfica semanal #10, publicada en Reporte Índigo impreso.
+
++ `percepciones_crisis` - Percepción de causas de la crisis financiera del 2009, por país en América Latina. Actualizado a 2010.
+
+**Fuente:** Americas Barometer, LAPOP 2010, University of Vanderbilt
+### publicaciones eem
+Conteo de publicaciones por autor en www.enelmargen.org al 28 de Marzo del 2013. 
+
++ `publicaciones_eem` - Publicaciones en www.enelmargen.org por autor. 
+
+**Fuente:** www.enelmargen.org
+### viviendas propias
+Datos para publicaciones diversas en Reporte Índigo.
+
++ `viviendas_propias` - Tasa de crecimiento de familias con vivienda propia, por año en México. Datos de 2013-2014 y 2014-2015 son estimaciones. 
+
+**Fuente:** INFONAVIT y Economic Monitor.
