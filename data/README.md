@@ -34,7 +34,7 @@ Se puede encontrar el artículo que acompaña estos datos aquí: http://www.enel
 
 + `elecciones_2012` - Likes en facebook y seguidores de twitter que mostraban los tres principales candidatos a la presidencia de México, de Julio 2011 a Enero 2012, por día.
 
-**Fuente:** Facebook, Twitter. Recopilado por Miguel Rodriguez.
+**Fuente:** Facebook, Twitter. Recopilado por Miguel Rodriguez
 ### nobel
 Se puede encontrar el artículo que acompaña estos datos aquí: http://www.enelmargen.org/2011/02/la-concentracion-del-conocimiento.html
 
@@ -58,4 +58,10 @@ Datos para publicaciones diversas en Reporte Índigo.
 
 + `viviendas_propias` - Tasa de crecimiento de familias con vivienda propia, por año en México. Datos de 2013-2014 y 2014-2015 son estimaciones. 
 
-**Fuente:** INFONAVIT y Economic Monitor.
+**Fuente:** INFONAVIT y Economic Monitor
+### licitaciones compranet
+Se puede encontrar el artículo que acompaña estos datos aquí: http://www.reporteindigo.com/indigonomics/gatsby-la-mexicana
+
++ `licitaciones_compranet_2011` - Listado de licitaciones bajo el esquema de transparencia de Compranet, durante 2011.
+
+**Fuente:** SHCP
