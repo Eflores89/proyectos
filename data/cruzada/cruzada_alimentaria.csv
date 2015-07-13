@@ -1,0 +1,401 @@
+Clave,Estado,Municipio,Poblacion,P_PobrezaAlimentaria
+7059,Chiapas,Ocosingo," 170,280 ",68.2
+7052,Chiapas,Las Margaritas," 98,374 ",69.0
+7031,Chiapas,Chil¢n," 95,907 ",76.5
+7023,Chiapas,Chamula," 67,085 ",71.7
+7096,Chiapas,Tila," 63,172 ",76.4
+7099,Chiapas,La Trinitaria," 60,417 ",67.6
+7057,Chiapas,Motozintla," 58,115 ",62.2
+7077,Chiapas,Salto de Agua," 53,547 ",64.8
+7064,Chiapas,Oxchuc," 41,423 ",81.3
+7020,Chiapas,La Concordia," 40,189 ",62.0
+7093,Chiapas,Tenejapa," 37,826 ",81.0
+7092,Chiapas,Tecpat n," 37,543 ",56.0
+7041,Chiapas,La Independencia," 36,951 ",64.2
+7080,Chiapas,Siltepec," 35,871 ",71.2
+7081,Chiapas,Simojovel," 32,451 ",73.0
+7094,Chiapas,Teopisca," 32,368 ",57.0
+7026,Chiapas,Chenalh¢," 31,788 ",77.0
+7109,Chiapas,Yajal¢n," 31,457 ",61.6
+7111,Chiapas,Zinacant n," 31,061 ",74.8
+7100,Chiapas,Tumbal ," 28,884 ",78.7
+7008,Chiapas,Angel Albino Corzo," 28,883 ",59.3
+7030,Chiapas,Chicomuselo," 28,260 ",60.9
+7072,Chiapas,Pueblo Nuevo Solistahuac ," 27,832 ",68.3
+7032,Chiapas,Escuintla," 27,364 ",60.3
+7013,Chiapas,Bochil," 26,446 ",60.3
+7006,Chiapas,Amatenango de la Frontera," 25,346 ",54.6
+7112,Chiapas,San Juan Cancuc," 24,906 ",83.7
+7004,Chiapas,Altamirano," 24,725 ",68.7
+7076,Chiapas,Sabanilla," 23,675 ",77.0
+7044,Chiapas,Ixtapa," 21,705 ",59.2
+7039,Chiapas,Huitiup n," 20,087 ",74.8
+7005,Chiapas,Amat n," 19,637 ",71.1
+7066,Chiapas,Pantelh¢," 19,228 ",78.8
+7038,Chiapas,Huixt n," 19,018 ",80.6
+7011,Chiapas,Bella Vista," 17,553 ",62.8
+7049,Chiapas,Larr inzar," 17,320 ",78.4
+7047,Chiapas,Jitotol," 15,005 ",56.4
+7014,Chiapas,El Bosque," 14,932 ",64.8
+7001,Chiapas,Acacoyagua," 14,653 ",58.2
+7022,Chiapas,Chalchihuit n," 13,295 ",81.4
+7070,Chiapas,El Porvenir," 12,831 ",73.0
+7115,Chiapas,Maravilla Tenejapa," 10,906 ",63.5
+7060,Chiapas,Ocotepec," 10,543 ",75.8
+7082,Chiapas,Sital ," 10,246 ",72.4
+7067,Chiapas,Pantepec," 9,785 ",67.5
+7024,Chiapas,Chanal," 9,050 ",83.1
+7056,Chiapas,Mitontic," 9,042 ",70.6
+7042,Chiapas,Ixhuat n," 8,734 ",61.1
+7116,Chiapas,Marqu‚s de Comillas," 8,538 ",57.7
+7007,Chiapas,Amatenango del Valle," 8,506 ",61.9
+7073,Chiapas,Ray¢n," 7,965 ",62.6
+7084,Chiapas,Solosuchiapa," 7,900 ",59.5
+7018,Chiapas,Coapilla," 7,681 ",61.6
+7025,Chiapas,Chapultenango," 7,124 ",67.0
+7053,Chiapas,Mazapa de Madero," 6,845 ",61.8
+7036,Chiapas,La Grandeza," 6,723 ",67.8
+7010,Chiapas,Bejucal de Ocampo," 6,612 ",65.3
+7117,Chiapas,Montecristo de Guerrero," 6,511 ",57.1
+7033,Chiapas,Francisco Le¢n," 6,454 ",68.7
+7110,Chiapas,San Lucas," 5,918 ",59.2
+7098,Chiapas,Totolapa," 5,839 ",54.7
+7113,Chiapas,Aldama," 4,906 ",80.1
+7090,Chiapas,Tapalapa," 3,928 ",62.8
+7118,Chiapas,San Andr‚s Duraznal," 3,145 ",72.7
+7119,Chiapas,Santiago el Pinar," 2,854 ",84.0
+8008,Chihuahua,Batopilas," 13,298 ",57.7
+8046,Chihuahua,Morelos," 7,172 ",57.3
+10014,Durango,Mezquital," 30,069 ",80.1
+10034,Durango,Tamazula," 25,888 ",55.4
+10019,Durango,Ot ez," 4,543 ",58.7
+11045,Guanajuato,Xich£," 10,592 ",60.8
+11006,Guanajuato,Atarjea," 5,035 ",58.8
+12028,Guerrero,Chilapa de µlvarez," 105,146 ",58.7
+12021,Guerrero,Coyuca de Ben¡tez," 69,064 ",55.7
+12012,Guerrero,Ayutla de los Libres," 55,974 ",67.8
+12056,Guerrero,Tecoanapa," 42,619 ",64.1
+12052,Guerrero,San Luis Acatl n," 41,884 ",66.8
+12003,Guerrero,Ajuchitl n del Progreso," 37,475 ",66.7
+12032,Guerrero,General Heliodoro Castillo," 34,554 ",73.3
+12051,Guerrero,Quechultenango," 33,367 ",66.5
+12076,Guerrero,Acatepec," 28,525 ",75.4
+12054,Guerrero,San Miguel Totolapan," 27,033 ",74.2
+12041,Guerrero,Malinaltepec," 26,613 ",76.3
+12071,Guerrero,Xochistlahuaca," 25,180 ",66.9
+12010,Guerrero,Atlixtac," 23,371 ",74.5
+12002,Guerrero,Ahuacuotzingo," 23,026 ",73.7
+12040,Guerrero,Leonardo Bravo," 22,982 ",57.9
+12074,Guerrero,Zitlala," 19,718 ",61.6
+12062,Guerrero,Tlacoachistlahuaca," 18,055 ",72.0
+12043,Guerrero,Metlat¢noc," 17,398 ",77.5
+12020,Guerrero,Copanatoyac," 17,337 ",76.0
+12004,Guerrero,Alcozauca de Guerrero," 16,237 ",76.1
+12078,Guerrero,Cochoapa el Grande," 15,572 ",73.9
+12042,Guerrero,M rtir de Cuilapan," 15,272 ",57.4
+12079,Guerrero,Jos‚ Joaqu¡n de Herrera," 14,424 ",77.8
+12016,Guerrero,Coahuayutla de Jos‚ Mar¡a Izaza," 13,291 ",59.9
+12069,Guerrero,Xalpatl huac," 12,615 ",73.9
+12036,Guerrero,Igualapa," 10,312 ",66.2
+12081,Guerrero,Iliatenco," 10,039 ",65.4
+12072,Guerrero,Zapotitl n Tablas," 9,601 ",76.1
+12063,Guerrero,Tlacoapa," 8,733 ",70.3
+12047,Guerrero,Pedro Ascencio Alquisiras," 6,987 ",62.5
+12024,Guerrero,Cual c," 6,816 ",59.8
+12065,Guerrero,Tlalixtaquilla de Maldonado," 6,534 ",55.5
+12031,Guerrero,General Canuto A. Neri," 6,394 ",61.2
+12009,Guerrero,Atlamajalcingo del Monte," 5,143 ",71.9
+13028,Hidalgo,Huejutla de Reyes," 115,786 ",55.5
+13046,Hidalgo,San Felipe Orizatl n," 38,472 ",62.0
+13073,Hidalgo,Tlanchinol," 33,694 ",66.5
+13062,Hidalgo,Tepehuac n de Guerrero," 27,240 ",66.4
+13027,Hidalgo,Huehuetla," 22,927 ",62.2
+13025,Hidalgo,Huautla," 22,521 ",73.0
+13080,Hidalgo,Yahualica," 22,238 ",77.9
+13011,Hidalgo,Atlapexco," 18,769 ",74.7
+13078,Hidalgo,Xochiatipan," 18,157 ",73.9
+13014,Hidalgo,Calnali," 15,815 ",56.3
+13068,Hidalgo,Tianguistengo," 13,478 ",55.2
+13026,Hidalgo,Huazalingo," 11,863 ",72.8
+14061,Jalisco,Mezquitic," 15,674 ",60.1
+15074,M‚xico,San Felipe del Progreso," 100,201 ",54.9
+15124,M‚xico,San Jos‚ del Rinc¢n," 79,945 ",57.5
+16097,Michoac n,Turicato," 31,494 ",62.6
+16025,Michoac n,Chilchota," 30,299 ",54.7
+16099,Michoac n,Tuzantla," 15,302 ",60.6
+16029,Michoac n,Churumuco," 13,801 ",61.9
+16092,Michoac n,Tiquicheo de Nicol s Romero," 13,665 ",61.6
+16101,Michoac n,Tzitzio," 9,394 ",55.3
+16013,Michoac n,Car cuaro," 9,337 ",57.7
+16081,Michoac n,Susupuato," 7,703 ",56.9
+16057,Michoac n,Nocup‚taro," 7,649 ",57.0
+18009,Nayarit,Del Nayar," 30,551 ",60.6
+20334,Oaxaca,Villa de Tututepec de Melchor Ocam," 40,767 ",56.6
+20198,Oaxaca,San Juan Guichicovi," 27,646 ",60.2
+20134,Oaxaca,San Felipe Jalapa de D¡az," 25,395 ",68.1
+20190,Oaxaca,San Juan Cotzoc¢n," 22,478 ",58.7
+20406,Oaxaca,Santa Mar¡a Chilchotla," 20,577 ",70.4
+20232,Oaxaca,San Lucas Ojitl n," 19,871 ",60.2
+20171,Oaxaca,San Jos‚ Tenango," 18,120 ",71.8
+20085,Oaxaca,San Agust¡n Loxicha," 17,823 ",68.9
+20386,Oaxaca,Santa Cruz Zenzontepec," 16,773 ",75.6
+20205,Oaxaca,San Juan Lalana," 16,335 ",67.2
+20207,Oaxaca,San Juan Mazatl n," 16,138 ",71.3
+20526,Oaxaca,Santos Reyes Nopala," 14,504 ",60.8
+20058,Oaxaca,Mazatl n Villa de Flores," 12,934 ",60.4
+20248,Oaxaca,San Mateo del Mar," 12,667 ",58.4
+20468,Oaxaca,Santiago Jocotepec," 12,423 ",71.4
+20242,Oaxaca,San Mart¡n Peras," 12,406 ",59.5
+20277,Oaxaca,Villa Sola de Vega," 11,884 ",61.8
+20136,Oaxaca,San Felipe Usila," 11,642 ",73.0
+20466,Oaxaca,Santiago Ixtayutla," 11,542 ",75.1
+20450,Oaxaca,Santiago Amoltepec," 11,113 ",68.7
+20309,Oaxaca,San Pedro Ixcatl n," 10,931 ",55.7
+20377,Oaxaca,Santa Cruz Itundujia," 10,386 ",63.6
+20312,Oaxaca,San Pedro Jicay n," 10,252 ",56.1
+20125,Oaxaca,San Carlos Yautepec," 9,857 ",58.2
+20437,Oaxaca,Santa Mar¡a Tlahuitoltepec," 9,000 ",61.4
+20509,Oaxaca,Santo Domingo de Morelos," 8,751 ",67.7
+20012,Oaxaca,Candelaria Loxicha," 8,686 ",61.2
+20188,Oaxaca,San Juan Colorado," 8,669 ",58.2
+20407,Oaxaca,Santa Mar¡a Chimalapa," 8,643 ",67.4
+20426,Oaxaca,Santa Mar¡a Pe¤oles," 7,640 ",72.4
+20016,Oaxaca,Coicoy n de las Flores," 7,598 ",74.2
+20266,Oaxaca,San Miguel del Puerto," 7,510 ",61.5
+20234,Oaxaca,San Lucas Zoqui pam," 7,384 ",64.3
+20446,Oaxaca,Santa Mar¡a Yucuhiti," 6,496 ",57.7
+20392,Oaxaca,Santa Luc¡a Monteverde," 6,397 ",62.8
+20229,Oaxaca,San Lorenzo Texmel£can," 6,319 ",80.6
+20072,Oaxaca,San Jos‚ del Progreso," 6,164 ",57.0
+20275,Oaxaca,San Miguel Quetzaltepec," 6,015 ",63.4
+20261,Oaxaca,San Miguel Amatitl n," 5,938 ",54.7
+20210,Oaxaca,San Juan ¥um¡," 5,796 ",56.2
+20225,Oaxaca,San Lorenzo," 5,781 ",55.6
+20272,Oaxaca,San Miguel Panixtlahuaca," 5,724 ",64.3
+20040,Oaxaca,Huautepec," 5,672 ",69.4
+20498,Oaxaca,Santiago Yaveo," 5,503 ",56.6
+20543,Oaxaca,Tataltepec de Vald‚s," 5,377 ",67.5
+20036,Oaxaca,Guevea de Humboldt," 5,283 ",56.1
+20159,Oaxaca,San Jer¢nimo Coatl n," 4,979 ",75.4
+20460,Oaxaca,Santiago Cho pam," 4,979 ",58.9
+20015,Oaxaca,Coatecas Altas," 4,882 ",60.5
+20502,Oaxaca,Santiago Zacatepec," 4,871 ",69.5
+20554,Oaxaca,Totontepec Villa de Morelos," 4,780 ",58.3
+20489,Oaxaca,Santiago Tetepec," 4,708 ",70.3
+20326,Oaxaca,San Pedro Sochi pam," 4,603 ",70.4
+20434,Oaxaca,Santa Mar¡a Teopoxco," 4,436 ",70.2
+20367,Oaxaca,Santa Catarina Mechoac n," 4,409 ",64.9
+20494,Oaxaca,Santiago Tlazoyaltepec," 4,357 ",67.9
+20051,Oaxaca,Magdalena Teitipac," 4,296 ",63.9
+20098,Oaxaca,San Andr‚s Teotil lpam," 4,255 ",73.0
+20366,Oaxaca,Santa Catarina Loxicha," 4,163 ",66.2
+20213,Oaxaca,San Juan Quiahije," 4,154 ",66.2
+20330,Oaxaca,San Pedro Teutila," 4,139 ",61.1
+20095,Oaxaca,San Andr‚s Paxtl n," 4,066 ",62.4
+20029,Oaxaca,Eloxochitl n de Flores Mag¢n," 4,042 ",64.7
+20424,Oaxaca,Santa Mar¡a Ozolotepec," 4,023 ",62.0
+20126,Oaxaca,San Crist¢bal Amatl n," 3,978 ",61.6
+20306,Oaxaca,San Pedro el Alto," 3,949 ",71.1
+20202,Oaxaca,San Juan Lachao," 3,936 ",57.3
+20384,Oaxaca,Santa Cruz Xitla," 3,933 ",59.4
+20153,Oaxaca,San Gabriel Mixtepec," 3,930 ",56.2
+20491,Oaxaca,Santiago Textitl n," 3,929 ",70.9
+20291,Oaxaca,San Pablo Coatl n," 3,876 ",69.7
+20111,Oaxaca,San Antonio Tepetlapa," 3,873 ",64.7
+20532,Oaxaca,Santo Tom s Ocotepec," 3,789 ",71.3
+20517,Oaxaca,Santo Domingo Tepuxtepec," 3,714 ",66.0
+20116,Oaxaca,San Bartolom‚ Ayautla," 3,713 ",73.5
+20169,Oaxaca,San Jos‚ Independencia," 3,689 ",70.0
+20410,Oaxaca,Santa Mar¡a Ecatepec," 3,635 ",55.4
+20200,Oaxaca,San Juan Juquila Mixes," 3,557 ",61.4
+20170,Oaxaca,San Jos‚ Lachiguiri," 3,541 ",74.1
+20302,Oaxaca,San Pedro Atoyac," 3,464 ",62.9
+20050,Oaxaca,Magdalena Pe¤asco," 3,461 ",59.2
+20284,Oaxaca,San Miguel Tilqui pam," 3,442 ",68.7
+20534,Oaxaca,San Vicente Coatl n," 3,378 ",67.1
+20017,Oaxaca,La Compa¤¡a," 3,367 ",61.8
+20203,Oaxaca,San Juan Lachigalla," 3,363 ",60.9
+20071,Oaxaca,Pluma Hidalgo," 3,314 ",60.0
+20511,Oaxaca,Santo Domingo Nuxa ," 3,253 ",61.9
+20396,Oaxaca,Santa Mar¡a la Asunci¢n," 3,223 ",63.9
+20454,Oaxaca,Santiago Atitl n," 3,187 ",64.5
+20137,Oaxaca,San Francisco Cahuacu ," 3,170 ",64.3
+20217,Oaxaca,San Juan Tamazola," 3,170 ",58.5
+20535,Oaxaca,San Vicente Lachix¡o," 3,154 ",63.5
+20273,Oaxaca,San Miguel Peras," 3,126 ",64.9
+20457,Oaxaca,Santiago Camotl n," 3,089 ",71.0
+20347,Oaxaca,San Sebasti n R¡o Hondo," 3,069 ",59.0
+20391,Oaxaca,Santa Luc¡a Miahuatl n," 3,023 ",68.8
+20378,Oaxaca,Santa Cruz Mixtepec," 2,984 ",56.5
+20412,Oaxaca,Santa Mar¡a Guienagati," 2,911 ",59.8
+20530,Oaxaca,Santo Tom s Jalieza," 2,885 ",57.0
+20495,Oaxaca,Santiago Xanica," 2,829 ",68.2
+20263,Oaxaca,San Miguel Coatl n," 2,808 ",72.6
+20254,Oaxaca,San Mateo R¡o Hondo," 2,806 ",57.3
+20490,Oaxaca,Santiago Texcalcingo," 2,781 ",68.2
+20211,Oaxaca,San Juan Ozolotepec," 2,779 ",71.3
+20113,Oaxaca,San Baltazar Loxicha," 2,751 ",65.2
+20161,Oaxaca,San Jer¢nimo Sosola," 2,736 ",56.5
+20212,Oaxaca,San Juan Petlapa," 2,717 ",71.7
+20279,Oaxaca,San Miguel Suchixtepec," 2,694 ",61.8
+20379,Oaxaca,Santa Cruz Nundaco," 2,692 ",58.6
+20253,Oaxaca,San Mateo Pi¤as," 2,647 ",55.4
+20527,Oaxaca,Santos Reyes P palo," 2,647 ",68.1
+20433,Oaxaca,Santa Mar¡a Temaxcaltepec," 2,628 ",72.2
+20117,Oaxaca,San Bartolom‚ Loxicha," 2,617 ",62.9
+20240,Oaxaca,San Mart¡n Itunyoso," 2,554 ",55.2
+20297,Oaxaca,San Pablo Tijaltepec," 2,529 ",69.9
+20231,Oaxaca,San Lucas Camotl n," 2,524 ",73.3
+20344,Oaxaca,San Sebasti n Coatl n," 2,509 ",63.3
+20352,Oaxaca,San Sim¢n Zahuatl n," 2,481 ",79.0
+20561,Oaxaca,Yaxe," 2,442 ",58.0
+20060,Oaxaca,Mixistl n de la Reforma," 2,438 ",64.0
+20189,Oaxaca,San Juan Comaltepec," 2,389 ",66.4
+20271,Oaxaca,San Miguel Mixtepec," 2,387 ",71.9
+20435,Oaxaca,Santa Mar¡a Tepantlali," 2,315 ",57.9
+20388,Oaxaca,Santa In‚s del Monte," 2,275 ",66.3
+20182,Oaxaca,San Juan Bautista Tlacoatzintepec," 2,241 ",72.4
+20146,Oaxaca,San Francisco Logueche," 2,240 ",72.3
+20259,Oaxaca,San Miguel Ahuehuetitl n," 2,226 ",63.2
+20323,Oaxaca,San Pedro Ocotepec," 2,171 ",66.6
+20158,Oaxaca,San Jacinto Tlacotepec," 2,145 ",62.1
+20069,Oaxaca,La Pe," 2,135 ",61.7
+20003,Oaxaca,Asunci¢n Cacalotepec," 2,095 ",56.0
+20425,Oaxaca,Santa Mar¡a P palo," 2,087 ",55.4
+20264,Oaxaca,San Miguel Chicahua," 2,035 ",58.9
+20187,Oaxaca,San Juan Coatz¢spam," 2,019 ",67.5
+20154,Oaxaca,San Ildefonso Amatl n," 2,009 ",62.2
+20139,Oaxaca,San Francisco Chapulapa," 1,968 ",68.6
+20201,Oaxaca,San Juan Juquila Vijanos," 1,908 ",54.6
+20255,Oaxaca,San Mateo Sindihui," 1,871 ",59.1
+20167,Oaxaca,San Jos‚ del Pe¤asco," 1,863 ",61.7
+20351,Oaxaca,San Sim¢n Almolongas," 1,847 ",56.2
+20148,Oaxaca,San Francisco Ozolotepec," 1,835 ",77.5
+20448,Oaxaca,Santa Mar¡a Zaniza," 1,818 ",79.4
+20487,Oaxaca,Santiago Tenango," 1,782 ",56.2
+20315,Oaxaca,San Pedro M rtir," 1,781 ",59.1
+20162,Oaxaca,San Jer¢nimo Taviche," 1,750 ",69.5
+20353,Oaxaca,Santa Ana," 1,697 ",60.5
+20395,Oaxaca,Santa Mar¡a Apazco," 1,629 ",68.3
+20438,Oaxaca,Santa Mar¡a Tlalixtac," 1,568 ",59.5
+20428,Oaxaca,Santa Mar¡a Quiegolani," 1,537 ",54.8
+20477,Oaxaca,Santiago Minas," 1,504 ",58.0
+20420,Oaxaca,Santa Mar¡a Lachix¡o," 1,454 ",60.0
+20465,Oaxaca,Santiago Ixcuintepec," 1,441 ",66.7
+20236,Oaxaca,San Marcial Ozolotepec," 1,399 ",68.2
+20274,Oaxaca,San Miguel Piedras," 1,375 ",61.9
+20529,Oaxaca,Santos Reyes Yucun ," 1,322 ",78.0
+20374,Oaxaca,Santa Cruz Acatepec," 1,301 ",68.0
+20292,Oaxaca,San Pablo Cuatro Venados," 1,267 ",81.1
+20142,Oaxaca,San Francisco Huehuetl n," 1,251 ",60.3
+20270,Oaxaca,San Miguel Huautla," 1,237 ",76.0
+20152,Oaxaca,San Francisco Tlapancingo," 1,235 ",55.9
+20048,Oaxaca,Magdalena Mixtepec," 1,101 ",66.2
+20328,Oaxaca,San Pedro Taviche," 1,076 ",62.8
+20361,Oaxaca,Santa Catalina Quier¡, 992 ,70.6
+20389,Oaxaca,Santa In‚s Yatzeche, 975 ,56.3
+20512,Oaxaca,Santo Domingo Ozolotepec, 962 ,60.4
+20335,Oaxaca,San Pedro Yaneri, 943 ,63.4
+20522,Oaxaca,Santo Domingo Xagac¡a, 928 ,59.8
+20257,Oaxaca,San Melchor Betaza, 919 ,54.8
+20436,Oaxaca,Santa Mar¡a Texcatitl n, 911 ,57.4
+20322,Oaxaca,San Pedro Ocopetatillo, 897 ,61.6
+20304,Oaxaca,San Pedro Coxcaltepec C ntaros, 877 ,64.9
+20514,Oaxaca,Santo Domingo Roayaga, 863 ,66.3
+20313,Oaxaca,San Pedro Jocotipac, 821 ,56.6
+20451,Oaxaca,Santiago Apoala, 815 ,69.5
+20101,Oaxaca,San Andr‚s Zabache, 756 ,62.0
+20228,Oaxaca,San Lorenzo Cuaunecuiltitla, 738 ,59.0
+20288,Oaxaca,San Miguel Yotao, 632 ,65.7
+20354,Oaxaca,Santa Ana Ateixtlahuaca, 572 ,66.4
+20074,Oaxaca,Santa Catarina Quioquitani, 439 ,67.7
+20311,Oaxaca,San Pedro Jaltepetongo, 271 ,71.3
+20341,Oaxaca,San Pedro Yucunama, 244 ,57.4
+21010,Puebla,Ajalpan," 54,740 ",59.1
+21043,Puebla,Cuetzalan del Progreso," 45,781 ",58.7
+21050,Puebla,Chichiquila," 23,072 ",82.4
+21195,Puebla,Vicente Guerrero," 20,391 ",65.9
+21116,Puebla,Quimixtl n," 19,609 ",65.5
+21183,Puebla,Tlaola," 19,010 ",62.1
+21217,Puebla,Zoquitl n," 18,688 ",62.5
+21212,Puebla,Zautla," 18,567 ",59.3
+21058,Puebla,Chilchotla," 18,303 ",57.0
+21178,Puebla,Tlacuilotepec," 16,797 ",55.7
+21072,Puebla,Huehuetla," 15,616 ",62.2
+21006,Puebla,Ahuacatl n," 13,745 ",61.3
+21049,Puebla,Chiconcuautla," 13,562 ",69.4
+21089,Puebla,Jopala," 12,749 ",56.6
+21145,Puebla,San Sebasti n Tlacotepec," 12,688 ",72.2
+21036,Puebla,Coyomeapan," 12,614 ",69.9
+21107,Puebla,Olintla," 12,104 ",55.7
+21078,Puebla,Huitzilan de Serd n," 12,088 ",58.3
+21086,Puebla,Jalpan," 12,070 ",60.3
+21202,Puebla,Xochitl n de Vicente Su rez," 11,744 ",59.9
+21061,Puebla,Eloxochitl n," 11,347 ",67.5
+21075,Puebla,Hueyapan," 11,105 ",58.0
+21100,Puebla,Naupan," 9,748 ",58.8
+21167,Puebla,Tepetzintla," 9,442 ",62.1
+21068,Puebla,Hermenegildo Galeana," 7,560 ",56.5
+21084,Puebla,Ixtepec," 6,745 ",56.4
+21184,Puebla,Tlapacoya," 6,034 ",59.9
+21077,Puebla,Hueytlalpan," 4,661 ",60.1
+21027,Puebla,Caltepec," 4,523 ",54.7
+21120,Puebla,San Antonio Ca¤ada," 4,518 ",64.0
+21215,Puebla,Zongozotla," 4,369 ",54.8
+21123,Puebla,San Felipe Tepatl n," 4,309 ",56.4
+21162,Puebla,Tepango de Rodr¡guez," 4,118 ",58.9
+21080,Puebla,Atlequizay n," 3,039 ",56.8
+21028,Puebla,Camocuautla," 2,207 ",56.5
+24003,San Luis Potos¡,Aquism¢n," 45,074 ",69.8
+24057,San Luis Potos¡,Matlapa," 29,548 ",61.3
+24029,San Luis Potos¡,San Mart¡n Chalchicuautla," 21,576 ",69.8
+24012,San Luis Potos¡,Tancanhuitz," 20,495 ",58.2
+24041,San Luis Potos¡,Tanlaj s," 19,062 ",75.5
+24038,San Luis Potos¡,Tampac n," 15,767 ",67.4
+24039,San Luis Potos¡,Tampamol¢n Corona," 13,760 ",58.7
+24031,San Luis Potos¡,Santa Catarina," 10,910 ",64.6
+24026,San Luis Potos¡,San Antonio," 9,274 ",59.0
+30155,Veracruz,Tantoyuca," 97,949 ",59.2
+30010,Veracruz,Altotonga," 56,962 ",58.4
+30058,Veracruz,Chicontepec," 55,373 ",67.9
+30083,Veracruz,Ixhuatl n de Madero," 48,609 ",74.2
+30047,Veracruz,Coscomatepec," 47,013 ",63.5
+30023,Veracruz,Atzalan," 43,570 ",62.0
+30149,Veracruz,Soteapan," 28,104 ",75.2
+30025,Veracruz,Ayahualulco," 23,431 ",57.4
+30159,Veracruz,Tehuipango," 20,406 ",78.5
+30147,Veracruz,Soledad Atzompa," 19,189 ",64.5
+30043,Veracruz,Comapa," 16,870 ",60.4
+30027,Veracruz,Benito Ju rez," 16,446 ",69.9
+30050,Veracruz,Coxquihui," 14,942 ",55.3
+30122,Veracruz,Pajapan," 14,621 ",57.7
+30063,Veracruz,Chontla," 14,549 ",62.4
+30067,Veracruz,Filomeno Mata," 14,426 ",73.4
+30104,Veracruz,Mecayapan," 13,633 ",61.5
+30024,Veracruz,Tlaltetela," 13,594 ",65.1
+30076,Veracruz,Ilamatl n," 13,319 ",67.5
+30154,Veracruz,Tantima," 13,248 ",57.5
+30202,Veracruz,Zontecomatl n de L¢pez y Fuentes," 13,091 ",74.1
+30057,Veracruz,Chiconquiaco," 12,516 ",58.0
+30203,Veracruz,Zozocolco de Hidalgo," 12,455 ",58.5
+30209,Veracruz,Tatahuicapan de Ju rez," 12,350 ",61.7
+30168,Veracruz,Tequila," 12,206 ",58.7
+30103,Veracruz,Mecatl n," 11,256 ",58.9
+30180,Veracruz,Tlachichilco," 10,729 ",65.4
+30170,Veracruz,Texcatepec," 9,733 ",72.7
+30110,Veracruz,Mixtla de Altamirano," 9,572 ",62.7
+30177,Veracruz,Tlacolulan," 9,420 ",55.8
+30020,Veracruz,Atlahuilco," 9,038 ",64.9
+30008,Veracruz,Alpatl huac," 8,988 ",61.4
+30165,Veracruz,Tepatlaxco," 7,618 ",56.2
+30037,Veracruz,Coahuitl n," 7,243 ",60.5
+30056,Veracruz,Chiconamel," 6,811 ",62.1
+30184,Veracruz,Tlaquilpa," 6,554 ",66.0
+30162,Veracruz,Tenampa," 5,646 ",62.6
+30187,Veracruz,Tonay n," 5,293 ",63.7
+30163,Veracruz,Tenochtitl n," 4,995 ",56.9
+30019,Veracruz,Astacinga," 4,846 ",62.1
+30171,Veracruz,Texhuac n," 4,740 ",55.2
+30195,Veracruz,Xoxocotla," 4,641 ",63.7
+30107,Veracruz,Las Minas," 2,824 ",63.5
+30098,Veracruz,Magdalena," 2,649 ",60.0

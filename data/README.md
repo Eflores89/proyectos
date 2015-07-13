@@ -41,12 +41,6 @@ Se puede encontrar el artículo que acompaña estos datos aquí: http://www.enel
 + `nobel` - Premios Nobel por principales países de origen (nacimiento de persona). Actualizado hasta Premio Nobel de Medicina del 2012. 
 
 **Fuente:** Sitio oficial premios Nobel
-### percepciones crisis
-Gráfica semanal #10, publicada en Reporte Índigo impreso.
-
-+ `percepciones_crisis` - Percepción de causas de la crisis financiera del 2009, por país en América Latina. Actualizado a 2010.
-
-**Fuente:** Americas Barometer, LAPOP 2010, University of Vanderbilt
 ### publicaciones eem
 Conteo de publicaciones por autor en www.enelmargen.org al 28 de Marzo del 2013. 
 
@@ -65,3 +59,42 @@ Se puede encontrar el artículo que acompaña estos datos aquí: http://www.repo
 + `licitaciones_compranet_2011` - Listado de licitaciones bajo el esquema de transparencia de Compranet, durante 2011.
 
 **Fuente:** SHCP
+### programa mundial de alimentos (pma)
+Gráfica semanal #8, publicada en Reporte Índigo impreso.
+
++ `pma` - Aportaciones, por año, en miles de dólares al Programa Mundial de Alimentos.
+
+**Fuente:** Reportes Anuales de Programa Mundial de Alimentos
+### oro
+Se puede encontrar el artículo que acompaña estos datos aquí: http://www.enelmargen.org/2012/08/demanda-por-joyeria.html
+
++ `precio_demanda` - Demanda en toneladas por año de oro y precio promedio en miles de dólares
+
+**Fuente:** World Gold Council
+### cruzada
+Se puede encontrar el artículo que acompaña estos datos aquí: http://www.enelmargen.org/2013/02/ineptitud-o-viejo-pri.html
+
++ `precio_elecciones` - 400 primeros municipios en dónde se inició Cruzada Nacional contra el Hambre y su estatus electoral.
++ `rezago` - 400 primeros municipios con más rezago en pobreza (general) en México.
++ `poblacion` - 400 primeros municipios con más cantidad de personas en pobreza alimenticia en México. 
++ `alimentaria` - 400 primeros municipios con más rezago en pobreza alimentaria en México.
+
+**Fuentes:** CIDAC, CONEVAL, CONAPO, SHCP
+### reporte desarrollo 
+Gráfica semanal #8, publicada en Reporte Índigo impreso.
+
++ `reporte_desarrollo` - Páginas por cada reporte de desarrollo del Banco Mundial. 
+
+**Fuente:** Banco Mundial
+### percepciones crisis
+Gráfica semanal #10, publicada en Reporte Índigo impreso.
+
++ `percepciones_crisis` - Percepción de causas de la crisis financiera del 2009, por país en América Latina. Actualizado a 2010.
+
+**Fuente:** Americas Barometer, LAPOP 2010, University of Vanderbilt
+### premios
+Gráfica semanal #16, publicada en Reporte Índigo impreso.
+
++ `premios` - Principales premios otorgados a nivel mundial y su cantidad en dólares. 
+
+**Fuentes:** Mo Ibrahim Foundation, Nobel Foundation, Indira Ghandi Foundation, Gobierno de Venezuela, UNESCO, American Architects Association
