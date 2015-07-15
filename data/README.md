@@ -92,6 +92,12 @@ Gráfica semanal #10, publicada en Reporte Índigo impreso.
 + `percepciones_crisis` - Percepción de causas de la crisis financiera del 2009, por país en América Latina. Actualizado a 2010.
 
 **Fuente:** Americas Barometer, LAPOP 2010, University of Vanderbilt
+### clase media
+Gráfica semanal #14, publicada en Reporte Índigo impreso.
+
++ `clasemedia_bm` - Porcentaje de población por tipo de clase socioeconómica - estudio del Banco Mundial. 
+
+**Fuentes:** Banco Mundial
 ### premios
 Gráfica semanal #16, publicada en Reporte Índigo impreso.
 
