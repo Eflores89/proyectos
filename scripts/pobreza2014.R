@@ -2,8 +2,8 @@ library(XLConnect) # para importar excel
 library(plyr) # para loopear listas
 library(reshape2) # para melt para graficas 
 library(ggplot2) #plots
-library(eem) # para formato graficas 
-library(inegiR) #para indicadores de crecimiento (cargar token)
+library(eem) # para formato graficas [install_github("eflores89/eem")]
+library(inegiR) #para indicadores de crecimiento (cargar token) [install_github("eflores89/inegiR")]
 
 # cargando la info de pobreza - solamente el primer cuadro de cada estado.
 wb<-loadWorkbook("Anexo estadístico_entidades_2010-2014.xls")
