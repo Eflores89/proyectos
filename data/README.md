@@ -104,3 +104,9 @@ Gráfica semanal #16, publicada en Reporte Índigo impreso.
 + `premios` - Principales premios otorgados a nivel mundial y su cantidad en dólares. 
 
 **Fuentes:** Mo Ibrahim Foundation, Nobel Foundation, Indira Ghandi Foundation, Gobierno de Venezuela, UNESCO, American Architects Association
+### militar
+Artículo para EEM y en pro de apertura de datos.
+
++ `bajas` - Bajas de las Fuerzas Armadas de México por razón y rango. Hasta marzo-2015.
+
+**Fuentes:** Secretaría de la Defensa Nacional (SEDENA). (http://www.sedena.gob.mx/transparencia/personal-dado-de-baja-por-diferentes-motivos)
