@@ -35,14 +35,14 @@ ggplot(data = deserciones, aes(FECHA, BAJAS))+
   geom_bar(stat = "identity", aes(fill = RANGO_GRUPO))+
   labs(title = "Deserciones", x = "Año", y = "Bajas")+
   theme_eem()+
-  scale_fill_manual(values = c("#4d7c28","#E47D04","#D8A19E","#A84A44"))
+  scale_fill_eem(20)
 
 # La tropa todavía se divide en más rangos, sospecho que será el más bajo, pero investiguemos:
 ggplot(data = subset(deserciones, RANGO_GRUPO == "TROPA"), aes(FECHA, BAJAS, fill = RANGO)) + 
   geom_bar(stat = "identity") +
   labs(title = "Deserciones (Solo Tropa)", x = "Año", y = "Bajas") +
   theme_eem()+
-  scale_fill_manual(values = c("#4d7c28","#E47D04","#D8A19E","#A84A44"))
+  scale_fill_eem(20)
 
 
 #### regresando a la alza en el 2015, que pasa contra el 2014? 
@@ -62,8 +62,7 @@ ggplot(ultimos_x_razon, aes(x = FECHA, y = BAJAS, group = RAZON, fill = RAZON))+
   geom_path(aes(colour = RAZON), size = 1)+
   theme_eem()+
   theme(legend.position = "left")+
-  scale_colour_manual(values = c("#A84A44","#E47D04","#D8A19E","#ae8b38",
-                                 "#4d7c28","#38b6a6","#2080c7","#ce726e","#155685"))+
+  scale_colour_eem(20)+
   labs(title = "Bajas 2014 y 2015 estimadas", legend = "Razones", y = "Bajas", x = "Año")
 
 
@@ -75,7 +74,7 @@ ultimos_x_razones_alza<-subset(ultimos, RAZON == "PASAR RVA.CORRESP." |
 ggplot(ultimos_x_razones_alza, 
        aes(x = RAZON, y = BAJAS, fill = RANGO_GRUPO))+
   geom_bar(stat = "identity")+
-  facet_grid(. ~ FECHA)+
-  scale_fill_manual(values = c("#A84A44","#E47D04","#D8A19E","#ae8b38",
-                                 "#4d7c28","#38b6a6","#2080c7","#ce726e","#155685"))+
-  theme_eem()
+  facet_grid(. ~ FECHA )+
+  scale_fill_eem(20)+
+  theme_eem()+
+  theme(legend.position = "left")
