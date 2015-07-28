@@ -29,6 +29,7 @@ ggplot(data = bajas, aes(x = FECHA, y = RAZON)) +
   theme_eem()
 
 # la razón, predominante, es la deserción... en que niveles de rango ha cambiado? 
+  # tener cuidado con que las deserciones esten en 4to lugar: 
 deserciones<-subset(bajas, RAZON == unique(bajas$RAZON)[4])
 
 ggplot(data = deserciones, aes(FECHA, BAJAS))+
