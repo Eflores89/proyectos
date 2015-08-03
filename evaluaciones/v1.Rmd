@@ -1,0 +1,74 @@
+---
+title: "Untitled"
+author: "Eduardo Flores"
+date: "August 1, 2015"
+output: pdf_document
+---
+
+```{r, inicioinfo, echo = FALSE, warning = FALSE}
+library(eem) #plots
+library(ggplot2) #plots
+library(inegiR) #denue inegi
+library(ggmap) #mapa
+
+#----------------------------
+
+
+```
+
+
+# Marco Conceptual
+
+## Area de influencia
+
+## Programa
+El programa consistió en la rehabilitación de una biblioteca en una area úrbana 
+
+
+```{r, location, echo = FALSE, warning = FALSE, message = FALSE}
+# Mapa de zona
+zona <- c(lon = -100.309901, lat = 25.669194)
+Mapa <- ggmap::get_map(location = zona, 
+                       source="google", 
+                       maptype= "satellite", zoom = 18)
+ggmap(Mapa)
+```
+
+
+## Impacto esperado
+
+# Metodología
+
+\begin{equation}
+\label{doblesdif}
+\eta = E(Y_1^T - Y_0^T | T_1 = 1) - E(Y_1^C - Y_0^C | T_1 = 0)   
+\end{equation}
+Dónde Y representa la variable de medición, el subíndice denota el tiempo de observación, (t = 0 pre intervención, t = 1 pos intervención) y el superíndice el grupo (C = control, T = Tratamiento).
+
+Duflo (2002) sugiere que la aplicación del método en base a una estimación de la siguiente forma: 
+\begin{equation}
+\label{duflo}
+Y_{it} = \alpha + \beta G + \gamma t + \eta(G * t) + \varepsilon_{it}
+\end{equation}
+Tal que el estimador $\eta$ representa el efecto de la intervención. 
+
+
+# Medición efecto de red
+```{r, efectored, echo = FALSE}
+# plots de metodología
+# ----- Efecto de carencia
+g1<-data.frame(x = c(1,2,3,4,1,2,3,4),
+               y = c(1,2,3,4,4,3,2,1),
+               g = c("o","o","o","o","d","d","d","d"))
+gg1<-ggplot(data = g1, aes(x,y, group = g))+
+  geom_line()+
+  theme_eem_pdf()
+
+plot(gg1)     
+```
+
+
+
+# Resultados
+
+# Retorno social
