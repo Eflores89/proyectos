@@ -34,7 +34,11 @@ baches <- servicios %>%
 
 # Traer estadisticas del denue
 token_api <- "f3fe034d-3273-4be5-a5b3-45b990eb0534" #no show
+<<<<<<< HEAD
 estadisticas_baches <- inegiR::denue_varios_stats(baches, 7, 6, token = token_api)
+=======
+estadisticas_baches <- inegiR::denue_varios_stats(baches_solocoordenadas, 2, 1, token = token_api) #error obj
+>>>>>>> a716586a6209438f743793ca33d4e18e5d878d04
 
 # unir 
 baches <- cbind.data.frame(baches, estadisticas_baches)
