@@ -34,7 +34,7 @@ baches <- servicios %>%
 
 # Traer estadisticas del denue
 token_api <- "f3fe034d-3273-4be5-a5b3-45b990eb0534" #no show
-estadisticas_baches <- inegiR::denue_varios_stats(baches_solocoordenadas, 2, 1, token = token_api)
+estadisticas_baches <- inegiR::denue_varios_stats(baches_solocoordenadas, 2, 1, token = token_api) #error obj
 
 # agregar id ubicacion y unir 
 estadisticas_baches$id_ubicacion<-baches$ubicacion
