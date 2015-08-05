@@ -32,30 +32,16 @@ baches <- servicios %>%
   mutate("Longitud" = ObtenerLongitud(ubicacion), 
          "Latitud" = ObtenerLatitud(ubicacion))
 
-baches_solocoordenadas <- baches %>% select(Longitud, Latitud)
-baches_solocoordenadas <- as.data.frame(baches_solocoordenadas)
-
-# mapear
-mapa <- leaflet(data = baches_solocoordenadas) %>%
-        addTiles() %>%
-        addMarkers(~Longitud, ~Latitud)
-
-# ¿Que hay alrededor de un bache?
+# Traer estadisticas del denue
 token_api <- "f3fe034d-3273-4be5-a5b3-45b990eb0534" #no show
 estadisticas_baches <- inegiR::denue_varios_stats(baches_solocoordenadas, 2, 1, token = token_api)
 
+# agregar id ubicacion y unir 
+estadisticas_baches$id_ubicacion<-baches$ubicacion
+baches <- as.data.frame(merge(estadisticas_baches, baches))
 
-# visualizar objetos -----------------------------------------
-# mapa de baches
-mapa
-
-# WIP-----------------------
-test<-estadisticas_baches %>% 
-  group_by(NEGOCIOS) %>% 
-  summarise("BACHES" = n()) %>% 
-  arrange(desc(BACHES))
-
-test$c2<-unlist(lapply(X = test$NEGOCIOS_SOBRE_AVENIDA, function(x){
+# agrupar 
+baches$NEGOCIOS_GRUPO<-unlist(lapply(X = baches$NEGOCIOS, function(x){
   if(x>0 && x<31){"0 A 30"}else{
     if(x>30 && x<51){"31 A 50"}else{
       if(x>50 && x<101){"51 A 100"} else{
@@ -68,7 +54,27 @@ test$c2<-unlist(lapply(X = test$NEGOCIOS_SOBRE_AVENIDA, function(x){
   }
 }))
 
+# mapear -------------------------------------------------------
+baches_coordenadas <- baches %>% select(Latitud, Longitud, NEGOCIOS_GRUPO)
+mapa <- leaflet(data = baches_coordenadas) %>%
+        addTiles() %>%
+        addMarkers(~Longitud, ~Latitud)
 
+
+
+# visualizar objetos -----------------------------------------
+# mapa de baches
+mapa
+
+# WIP-----------------------
+test<-estadisticas_baches %>% 
+  group_by(NEGOCIOS) %>% 
+  summarise("BACHES" = n()) %>% 
+  arrange(desc(BACHES))
+
+
+
+ggplot(test, aes(x = c2))+geom_histogram()
 
 ggplot(test, aes(x = BACHES, y = NEGOCIOS))+geom_point()+geom_smooth()
 
