@@ -34,11 +34,10 @@ baches <- servicios %>%
 
 # Traer estadisticas del denue
 token_api <- "f3fe034d-3273-4be5-a5b3-45b990eb0534" #no show
-estadisticas_baches <- inegiR::denue_varios_stats(baches_solocoordenadas, 2, 1, token = token_api)
+estadisticas_baches <- inegiR::denue_varios_stats(baches, 7, 6, token = token_api)
 
-# agregar id ubicacion y unir 
-estadisticas_baches$id_ubicacion<-baches$ubicacion
-baches <- as.data.frame(merge(estadisticas_baches, baches))
+# unir 
+baches <- cbind.data.frame(baches, estadisticas_baches)
 
 # agrupar 
 baches$NEGOCIOS_GRUPO<-unlist(lapply(X = baches$NEGOCIOS, function(x){
@@ -59,8 +58,10 @@ baches_coordenadas <- baches %>% select(Latitud, Longitud, NEGOCIOS_GRUPO)
 mapa <- leaflet(data = baches_coordenadas) %>%
         addTiles() %>%
         addMarkers(~Longitud, ~Latitud)
-
-
+#reordenar
+ggplot(test, aes(x = reorder(NEGOCIOS_GRUPO, CONTEO), 
+                 y = CONTEO)) +
+  geom_bar(stat = "identity")
 
 # visualizar objetos -----------------------------------------
 # mapa de baches
