@@ -27,11 +27,20 @@ El programa consistió en la rehabilitación de una biblioteca en una area úrba
 
 ```{r, location, echo = FALSE, warning = FALSE, message = FALSE}
 # Mapa de zona
-zona <- c(lon = -100.309901, lat = 25.669194)
-Mapa <- ggmap::get_map(location = zona, 
-                       source="google", 
-                       maptype= "satellite", zoom = 18)
-ggmap(Mapa)
+zona <- c(lon = -100.3041666, 
+          lat = 25.699266667)
+punto<-as.data.frame(t(zona))
+
+Mapa <- get_map(location = zona, 
+                source="google", 
+                maptype= "satellite", zoom = 16) 
+m <- ggmap(Mapa) +
+      geom_point(aes(x = lon, y = lat),
+                 data = punto,
+                 colour = "darkred",
+                 size = 10,
+                 alpha = .8)
+m
 ```
 
 
@@ -54,19 +63,25 @@ Tal que el estimador $\eta$ representa el efecto de la intervención.
 
 
 # Medición efecto de red
-```{r, efectored, echo = FALSE}
+```{r, efectored, echo = FALSE, fig.height = 4, fig.width = 4}
 # plots de metodología
+library(grid)
 # ----- Efecto de carencia
-g1<-data.frame(x = c(1,2,3,4,1,2,3,4),
-               y = c(1,2,3,4,4,3,2,1),
-               g = c("o","o","o","o","d","d","d","d"))
-gg1<-ggplot(data = g1, aes(x,y, group = g))+
+g1<-data.frame(x = c(2,2,2,2,1,2,3,4,3,3,3,3),
+               y = c(0,1,3,4,4,2,1,0.5,0,0,3,4),
+               g = c("o","o","o","o","d","d","d","d","i","i","i","i"))
+gg1<-ggplot(data = g1, aes(x,y, group = g, fill = g))+
   geom_line()+
+  annotate(geom = "text", x = 2.5, y = 2.4, label = "Eq. Inicial")+
+  annotate(geom = "text", x = 3.5, y = 0.4, label = "Eq. Final")+
+  geom_segment(aes(x = 2.1, y = 3.5, xend = 2.9, yend = 3.5), arrow = arrow(length = unit(0.1, "cm")))+
+  labs(title = "Efecto de una intervención \n Aumento de bien público", 
+       x = "Cantidad", 
+       y = "Precio")+
   theme_eem_pdf()
 
 plot(gg1)     
 ```
-
 
 
 # Resultados
