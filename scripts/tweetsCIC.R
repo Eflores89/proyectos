@@ -39,19 +39,34 @@ estadisticas_baches <- inegiR::denue_varios_stats(baches, 7, 6, token = token_ap
 # unir 
 baches <- cbind.data.frame(baches, estadisticas_baches)
 
-# agrupar 
-baches$NEGOCIOS_GRUPO<-unlist(lapply(X = baches$NEGOCIOS, function(x){
-  if(x>0 && x<31){"0 A 30"}else{
-    if(x>30 && x<51){"31 A 50"}else{
-      if(x>50 && x<101){"51 A 100"} else{
-        if(x>100 && x<201){"101 a 200"}else{
-          if(x>200 && x<401){"201 A 400"}else{
-            "MAS DE 401"}
+# agrupar --------------------
+  # Cantidad de negocios
+  baches$NEGOCIOS_GRUPO<-unlist(lapply(X = baches$NEGOCIOS, function(x){
+    if(x>0 && x<31){"0 A 30"}else{
+      if(x>30 && x<51){"31 A 50"}else{
+        if(x>50 && x<101){"51 A 100"} else{
+          if(x>100 && x<201){"101 a 200"}else{
+            if(x>200 && x<401){"201 A 400"}else{
+              "MAS DE 401"}
+          }
         }
       }
     }
-  }
-}))
+  }))
+
+# agrupar --------------------
+  # Cantidad de empleados
+  baches$EMPLEADOS_GRUPO<-unlist(lapply(X = baches$EMPLEADOS_EST, function(x){
+    if(x>0 && x<501){"0 A 500"}else{
+      if(x>500 && x<1001){"501 A 1000"}else{
+        if(x>1000 && x<1501){"1001 A 1500"} else{
+          if(x>1500 && x<2001){"1501 a 2000"}else{
+            "Más de 2001"
+          }
+        }
+      }
+    }
+  }))
 
 # mapear -------------------------------------------------------
 baches_coordenadas <- baches %>% select(Latitud, Longitud, NEGOCIOS_GRUPO)
@@ -59,20 +74,27 @@ mapa <- leaflet(data = baches_coordenadas) %>%
         addTiles() %>%
         addMarkers(~Longitud, ~Latitud)
 
-#reordenar!
-ggplot(test, aes(x = reorder(NEGOCIOS_GRUPO, CONTEO), 
-                 y = CONTEO)) +
-  geom_bar(stat = "identity")
-
 # visualizar objetos -----------------------------------------
 # mapa de baches
 mapa
 
 # WIP-----------------------
-test<-estadisticas_baches %>% 
-  group_by(NEGOCIOS) %>% 
-  summarise("BACHES" = n()) %>% 
-  arrange(desc(BACHES))
+baches_tidy <- baches %>% 
+  group_by(NEGOCIOS_GRUPO, EMPLEADOS_GRUPO) %>% 
+  summarise("CONTEO" = n_distinct(ubicacion)) %>% 
+  arrange(desc(CONTEO))
+
+ggplot(order_by(baches_tidy, NEGOCIOS_GRUPO ~ CONTEO), 
+       aes(x = NEGOCIOS_GRUPO, 
+           y = CONTEO))+
+  geom_bar(stat = "identity")
+
+
+ggplot(baches_tidy, 
+       aes(x = NEGOCIOS_GRUPO, 
+           y = CONTEO, 
+           fill = EMPLEADOS_GRUPO))+
+  geom_bar(stat = "identity")
 
 
 
@@ -88,3 +110,4 @@ test<-estadisticas_baches %>%
 
 ggplot(test, aes(x = BACHES, y = NEGOCIOS_SOBRE_AVENIDA))+geom_point()+geom_smooth()
 
+ggplot(baches, aes(x = EMPLEADOS_EST))+geom_histogram()
