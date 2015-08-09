@@ -69,6 +69,12 @@ baches <- cbind.data.frame(baches, estadisticas_baches)
     }
   }))
 
+# histograma por días
+ggplot(baches, aes(x = fecha))+
+  geom_histogram(fill = "#A84A44")+
+  theme_eem()+
+  labs(title = "Baches en Monterrey", x = "Fecha", y = "Baches Reportados")
+  
 # Gráfica en el tiempo ----------------------------------------
 ggplot(baches, 
        aes(y = EMPLEADOS_EST, 
@@ -92,7 +98,7 @@ mapa <- leaflet(data = baches_coordenadas) %>%
         addMarkers(~Longitud, ~Latitud, 
                    icon = makeIcon(cafe, sombra, 16, 15))
 
-### Analizar, por encima ----------------------------------------------
+### Analizar, distribución ----------------------------------------------
 # ver cuales son los más prioritarios
 # primero, por la cantidad de negocios a 250 mts
 baches_pornegocios <- baches %>% 
@@ -134,7 +140,7 @@ baches_prioridad_mapear <- baches_prioridad %>% select(Latitud, Longitud, PRIORI
 #Hacer iconos
 iconos<-baches_prioridad_mapear %>% mutate("icono" = ifelse(PRIORIDAD == 1, rojo, 
                                                      ifelse(PRIORIDAD == 2, naranja, 
-                                                     ifelse(PRIORIDAD == 3, verde, cafe))))
+                                                     ifelse(PRIORIDAD == 3, azul, cafe))))
 mapa_prioridades <- leaflet(data = baches_coordenadas) %>%
                     addTiles() %>%
                     addMarkers(~Longitud, ~Latitud, 
