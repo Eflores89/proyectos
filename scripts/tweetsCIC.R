@@ -69,6 +69,14 @@ baches <- cbind.data.frame(baches, estadisticas_baches)
     }
   }))
 
+# Gráfica en el tiempo ----------------------------------------
+ggplot(baches, 
+       aes(y = EMPLEADOS_EST, 
+           x = fecha)) +
+  geom_point(colour = "#A84A44")+
+  theme_eem()+
+  labs(title = "Baches en Monterrey", x = "Fecha", y = "Afectados Est.") 
+
 # mapear a todos ---------------------------------------------
 # iconos 
 cafe <- "http://2.bp.blogspot.com/-Ae2bV9yrqKU/VcdwhpWi26I/AAAAAAAAAWs/3kbp3W2UYGI/s1600/popo2.png"
@@ -110,41 +118,24 @@ ggplot(order_axis(baches_porempleados, EMPLEADOS_GRUPO, CONTEO),
   theme_eem()+
   labs(title = "Baches y empleados est. \n A 250 metros", x = "Num. Empleados est.", y = "Num. Baches") 
 
+### para ver cuales arreglar primero, varias consideraciones, 
+ # baches más viejos y que afectan a más usuarios; 
+baches_prioridad<- baches %>% mutate("PRIORIDAD" = 
+                    ifelse(EMPLEADOS_GRUPO == "Más a 2000" | 
+                           EMPLEADOS_GRUPO == "1501 a 2000" & fecha<'2013-07-01',1,
+                    ifelse(EMPLEADOS_GRUPO == "Más a 2000" | 
+                           EMPLEADOS_GRUPO == "1501 a 2000", 2, 
+                    ifelse(EMPLEADOS_GRUPO == "1001 A 1500" | 
+                           EMPLEADOS_GRUPO == "501 A 1000" , 3,4)))
+                  )
 
+baches_prioridad_mapear <- baches_prioridad %>% select(Latitud, Longitud, PRIORIDAD)
 
-
-
-
-
-# WIP-----------------------
-baches_tidy <- baches %>% 
-  group_by(NEGOCIOS_GRUPO, EMPLEADOS_GRUPO) %>% 
-  summarise("CONTEO" = n_distinct(ubicacion)) %>% 
-  arrange(desc(CONTEO))
-
-ggplot(order_axis(baches_tidy, NEGOCIOS_GRUPO, CONTEO), 
-       aes(x = NEGOCIOS_GRUPO_o, 
-           y = CONTEO))+
-  geom_bar(stat = "identity")
-#*********
-  
-
-
-ggplot(order_by(NEGOCIOS_GRUPO, ~ CONTEO, test), aes(x=NEGOCIOS_CONTEO, y=CONTEO))
-###....
-order_axis(test, NEGOCIOS_GRUPO, CONTEO)
-
-
-ggplot(test, aes(x = c2))+geom_histogram()
-
-ggplot(test, aes(x = BACHES, y = NEGOCIOS))+geom_point()+geom_smooth()
-
-test<-estadisticas_baches %>% 
-  group_by(NEGOCIOS_SOBRE_AVENIDA) %>% 
-  summarise("BACHES" = n()) %>% 
-  arrange(desc(BACHES)) %>% 
-  filter(NEGOCIOS_SOBRE_AVENIDA>1)
-
-ggplot(test, aes(x = BACHES, y = NEGOCIOS_SOBRE_AVENIDA))+geom_point()+geom_smooth()
-
-ggplot(baches, aes(x = EMPLEADOS_EST))+geom_histogram()
+#Hacer iconos
+iconos<-baches_prioridad_mapear %>% mutate("icono" = ifelse(PRIORIDAD == 1, rojo, 
+                                                     ifelse(PRIORIDAD == 2, naranja, 
+                                                     ifelse(PRIORIDAD == 3, verde, cafe))))
+mapa_prioridades <- leaflet(data = baches_coordenadas) %>%
+                    addTiles() %>%
+                    addMarkers(~Longitud, ~Latitud, 
+                    icon = makeIcon(iconos$icono, sombra, 16, 15))
