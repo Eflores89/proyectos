@@ -1,9 +1,10 @@
-# Minando datos CIC
-library(RSocrata) #read socrata data
-library(inegiR) #denue
+# datos CIC
+library(RSocrata) #read socrata data (github de Chicago)
+library(inegiR) #denue [install_github("eflores89/inegiR")]
 library(dplyr) #data wrangle
 library(leaflet) #mapa
 library(ggplot2) #graficas
+library(eem) #graficas [install_github("eflores89/eem")]
 
 # importar datos 
 servicios <- read.socrata(url = "https://data.cic.mx/Servicios-P-blicos/Servicios-Publicos/5xhc-cnbq")
@@ -68,15 +69,52 @@ baches <- cbind.data.frame(baches, estadisticas_baches)
     }
   }))
 
-# mapear -------------------------------------------------------
+# mapear a todos ---------------------------------------------
+# iconos 
+cafe <- "http://2.bp.blogspot.com/-Ae2bV9yrqKU/VcdwhpWi26I/AAAAAAAAAWs/3kbp3W2UYGI/s1600/popo2.png"
+azul <- "http://2.bp.blogspot.com/-esfUfORj8OE/VcdwhmvoFGI/AAAAAAAAAW0/ZQUBwu0cYv0/s1600/popo2_blue.png"
+rojo <- "http://2.bp.blogspot.com/-mNSxVkTwO38/VcdwiIY48_I/AAAAAAAAAW4/S3zLh5mM4zU/s1600/popo2_red.png"
+verde <- "http://3.bp.blogspot.com/-WHcMOZg4cnk/Vcdwhj8uTqI/AAAAAAAAAWw/Dcuuiod2XF4/s1600/popo2_green.png"
+naranja <- "http://3.bp.blogspot.com/-KSIhSiJm0nE/VcdwiEaKz1I/AAAAAAAAAW8/R5yf34ujA2s/s1600/popo2_orange.png"
+sombra <- "http://3.bp.blogspot.com/-nPEuvF6pfYs/Vcdwislx78I/AAAAAAAAAXA/Dn_73FAGbEo/s1600/popo_shadow.png"
+
 baches_coordenadas <- baches %>% select(Latitud, Longitud, NEGOCIOS_GRUPO)
 mapa <- leaflet(data = baches_coordenadas) %>%
         addTiles() %>%
-        addMarkers(~Longitud, ~Latitud)
+        addMarkers(~Longitud, ~Latitud, 
+                   icon = makeIcon(cafe, sombra, 16, 15))
 
-# visualizar objetos -----------------------------------------
-# mapa de baches
-mapa
+### Analizar, por encima ----------------------------------------------
+# ver cuales son los más prioritarios
+# primero, por la cantidad de negocios a 250 mts
+baches_pornegocios <- baches %>% 
+  group_by(NEGOCIOS_GRUPO) %>% 
+  summarise(CONTEO = n_distinct(ubicacion))
+
+ggplot(order_axis(baches_pornegocios, NEGOCIOS_GRUPO, CONTEO), 
+       aes(x = NEGOCIOS_GRUPO_o, 
+           y = CONTEO)) +
+  geom_bar(stat = "identity", fill = "#A84A44") +
+  theme_eem()+
+  labs(title = "Baches y negocios \n A 250 metros", x = "Num. Negocios", y = "Num. Baches") 
+
+# Ahora, por la cantidad de empleados, potenciales usuarios
+baches_porempleados <- baches %>% 
+  group_by(EMPLEADOS_GRUPO) %>% 
+  summarise(CONTEO = n_distinct(ubicacion))
+
+ggplot(order_axis(baches_porempleados, EMPLEADOS_GRUPO, CONTEO), 
+       aes(x = EMPLEADOS_GRUPO_o, 
+           y = CONTEO)) +
+  geom_bar(stat = "identity", fill = "#A84A44") +
+  theme_eem()+
+  labs(title = "Baches y empleados est. \n A 250 metros", x = "Num. Empleados est.", y = "Num. Baches") 
+
+
+
+
+
+
 
 # WIP-----------------------
 baches_tidy <- baches %>% 
@@ -84,18 +122,17 @@ baches_tidy <- baches %>%
   summarise("CONTEO" = n_distinct(ubicacion)) %>% 
   arrange(desc(CONTEO))
 
-ggplot(order_by(baches_tidy, NEGOCIOS_GRUPO ~ CONTEO), 
-       aes(x = NEGOCIOS_GRUPO, 
+ggplot(order_axis(baches_tidy, NEGOCIOS_GRUPO, CONTEO), 
+       aes(x = NEGOCIOS_GRUPO_o, 
            y = CONTEO))+
   geom_bar(stat = "identity")
+#*********
+  
 
 
-ggplot(baches_tidy, 
-       aes(x = NEGOCIOS_GRUPO, 
-           y = CONTEO, 
-           fill = EMPLEADOS_GRUPO))+
-  geom_bar(stat = "identity")
-
+ggplot(order_by(NEGOCIOS_GRUPO, ~ CONTEO, test), aes(x=NEGOCIOS_CONTEO, y=CONTEO))
+###....
+order_axis(test, NEGOCIOS_GRUPO, CONTEO)
 
 
 ggplot(test, aes(x = c2))+geom_histogram()
