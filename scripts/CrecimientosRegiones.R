@@ -5,6 +5,7 @@ library(inegiR)
 library(reshape2)
 library(eem)
 
+token<-"[token]"
 crecimientos<-series_crecimiento_regiones(token)
 
 df<-data.frame("fecha" = crecimientos$Fechas, 
