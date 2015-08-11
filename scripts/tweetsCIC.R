@@ -34,7 +34,7 @@ baches <- servicios %>%
          "Latitud" = ObtenerLatitud(ubicacion))
 
 # Traer estadisticas del denue
-token_api <- "f3fe034d-3273-4be5-a5b3-45b990eb0534" #no show
+token_api <- "[token]" #no show
 estadisticas_baches <- inegiR::denue_varios_stats(baches, 7, 6, token = token_api)
 
 # unir 
