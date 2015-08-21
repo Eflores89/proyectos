@@ -9,7 +9,7 @@ library(eem) #graficas [install_github("eflores89/eem")]
 # importar datos 
 servicios <- read.socrata(url = "https://data.cic.mx/Servicios-P-blicos/Servicios-Publicos/5xhc-cnbq")
   #errores con el tipo de fecha
-  servicios$fecha <- as.Date(servicios$fecha)
+  servicios$fecha <- base::as.Date(servicios$fecha)
 
 #funciones para traer coordenadas...
 ObtenerLatitud<-function(x)
