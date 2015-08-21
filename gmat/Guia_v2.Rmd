@@ -1,0 +1,198 @@
+---
+title: "GMAT II"
+author: "Eduardo Flores"
+date: "August 7, 2015"
+output: pdf_document
+---
+# Quant
+##Temas
+### **Number Theory**
+
+- **GCF**: Sets...{1,2,3,4} & {1,2} .:. {1*2} es GCF
+
+```{r eval = FALSE}
+    subset(unique(Set1), unique(Set1) %in% unique(Set2))
+```
+  
+- **LCM**: Sets...{1,2,3,4} & {1,2} .:. {1,2,3,4} es LCM
+```{r eval = FALSE}
+   unique(c(Set1, Set2))
+```
+
+
+### **Exponents and Roots**
+
+- Siempre te van a poner diferentes exponentes/bases, debes; 
+  1. Romper en pedazos (ejemplo: $5^{21}*4^{11}$ => $5^{21}*2^{11}*2^{11}$ => $5^{21}*2^{22}$)
+  2. Juntar los parecidos con otros (como rompiste a pedazos mas pequeños posibles (es como sacar el LCM))
+  3. "Mochar" si la variable que buscas está arriba ($5^{4n} = 5^{8}$ "mochas a" $4n = 8$) y encontrar "n"
+
+
+### Probability
+
+
+### Combinations and Permutations
+
+
+### **Plane Geometry**
+
+
+### **Coordinate Geometry**
+
+- "p" **intersects** x-axis .:. y = 0 (vice-versa con y)
+
+
+### 3D Geometry (volume)
+
+
+### **Functions**
+### Statistics
+### **(x+y) and (x-y)**
+### Mixture formulas
+ - Pregunta; "How many liters of pure alcohol must be added to a 100-liter solution that is 20 percent alcohol in order to produce a solution that is 25 percent alcohol?"
+ 
+|Lo que tenemos (% y Q)           | A lo que quiero llegar |   nueva solución |
+|:--------------------------------|:-----------------------|:--------------------|
+|alcohol puro (% = 100%, Q = x)   |                        |abs(25-20) = 5       |
+|                                 | % = 25%, Q = 20 +x     |                     |
+|solución hoy (% = 20%, Q = 100)  |                        |abs(100-25) = 75     |
+
+1. Que busco? la "Q" de alcohol puro (tambien es x)...
+2. Resto en "cruz", leo horizontal; 
+ - Alcohol puro: 5, 
+ - Solucion hoy: 75
+3. Esto nos dice que por cada 75 unidades de solución, tenemos que tener 5 de alcohol puro (lo lees directo). (En ratio da, 15:1). 
+4. Como la solución que tengo ya tiene 100 litros, tengo que agregarle 5 litros por cada 75 que tiene (o 1 por 15, simplificado). 
+5. 100/75*5 = 100/15 = 20/3
+
+### **Fractions, decimals (% increase/decrease)**
+### Absolute values
+### **Ratios, fractions of universe**
+### Conversions dimensional analysis
+### Groups
+
+- Con 2: T = G1 + G2 - B + N
+- Con 3: T = G1 + G2 + G3 - () - 2*() + N
+
+### Compounded or simple interest
+### **Scientific Notation**
+
+
+- 10^6 = un melón; 10^9 = un billon
+
+### Proportionality
+### Critical Zone (0<x<1)
+### **Zonal Trap**
+### Sequences and patterns
+
+- Recuerda: la suma de una serie consecutiva = media*n... 
+
+### Pyramids, spaces
+### Max-min, logical progression
+### **Work Problem**
+### **Distance Pie**
+### Summations
+### **Factoring roots**
+### Inequalities
+### Caracol/Fidel's Cigar
+
+##Teoría Essencial (Machete)
+### Shapes
+
+
+1. Lados; c **debe** ser > |a-b| **and** c < |a+b|
+  + Si te dan de lados: $a=3$ y $b=4$  
+      *  .:. |a-b| < c < |a+b| .:. 1 < c < 7
+
+
+
+2. Triangulos; 
+  + 2 lados iguales = isoceles (perfecto = 45º, 45º y 90º = lados(1,1,$sqrt{2}$))
+  + todos iguales = equilatero
+  + Triangulo "revienta" = 30º-60º-90 = lados(1,$sqrt{3}$,2=hypotenusa)
+  + **OB**tuse: 1 angulo > 90º 
+  + a**cute**: todos < 90º
+
+
+3. Tripletes;
+  + {3, 4, 5}
+  + {4, 12, 13}
+  + {7, 24, 25}
+
+
+4. Formas irregulares; 
+  + lados = 180(n-2)/n
+  
+
+5. Square if; 
+  + **A**ll sides "="
+  + **A**ll diagonals igual *or* bisect
+  + **A**ll angles = 90º
+  
+
+6. Circulos: 
+  + $pi$ =-ish $22/7$ 
+
+### Numbers
+- Primes: 
+
+    + **SOLO** positivos, 
+    + **UNICO** even es el 2, 
+    + **TODOS MENOS** 2 y 5 acaban en 1,3,7 o 9. 
+    + **SI ES MAYOR A 3:** regla 6n-1 ó 6n+1:
+```{r eval = FALSE}
+    prime <- function(n){
+      if(n>3 && n>0){} else {stop("mayor a 3 y 0")}
+      
+      test1<- (n-1)/6 
+      test2<- (n+1)/6
+      # si no tienen decimal (remainder)
+      # or (cualquiera de las condiciones)
+      if(test1 == round(test1,0) | test2 == round(test2,0)){
+        return("Prime")
+      }else{return("Not Prime")}
+    }
+```
+- Even-odds
+
+
+|Resta y sum|E|O
+|:--------|:-------|:---------|
+|E|e|o|
+|O|o|e|
+
+
+|Mult|E|O
+|:--------|:-------|:---------|
+|E|e|e|
+|O|e|o|
+
+
+|div(abajo arriba)|E|O
+|:--------|:-------|:---------|
+|E|?|e|
+|O|?|o|
+
+
+****
+
+\newpage
+
+
+#Verbal
+##Argument types
+### General to specific
+### Specific to general
+### Negation, Inverse
+### Cause and effect
+### Analogy or comparison (correlation)
+### Paradoxical
+### Conclusion based on studies/survey
+### Circular/continuos
+### Appeal to emotion
+### Explicit vs implicit
+### Negative assumption
+### If and only if
+### Deny the premise
+### Back door argument
+
