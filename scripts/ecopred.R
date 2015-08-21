@@ -10,8 +10,12 @@ library(eem) #graphs [devtools::install_github("eflores89/eem")]
 
 viviendas <- read.dbf("tviviendas.dbf") 
 demografia <- read.dbf("tsdem.dbf") 
+jefes <- read.dbf("tjefehogar.dbf")
 jovenes_1 <- read.dbf("tjovenes_i_ii.dbf") 
 jovenes_3 <- read.dbf("tjovenes_iii_iv.dbf")
+jovenes_5 <- read.dbf("tjovenes_v.dbf")
+jovenes_6 <- read.dbf("tjovenes_vi.dbf")
+jovenes_7 <- read.dbf("tjovenes_vii_viii.dbf")
 
 #IMPORTANTE; 
 # Tener cuidado, por que uso indices de columnas para extraer data sets, 
