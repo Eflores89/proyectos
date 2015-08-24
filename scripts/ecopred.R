@@ -1,5 +1,5 @@
 # setwd - no read
-folder<-"C:/Users/eduardo.lomas/Downloads/ECOPRED/ecopred14_bd"
+folder<-"/Users/eduardoflores/Documents/Dropbox/Data Science/R/proyectos/ecopred14_bd/"
 setwd(folder)
 
 # bibliotecas
@@ -8,14 +8,32 @@ library(dplyr) #para datos
 library(ggplot2) #graphs
 library(eem) #graphs [devtools::install_github("eflores89/eem")]
 
-viviendas <- read.dbf("tviviendas.dbf") 
-demografia <- read.dbf("tsdem.dbf") 
-jefes <- read.dbf("tjefehogar.dbf")
-jovenes_1 <- read.dbf("tjovenes_i_ii.dbf") 
-jovenes_3 <- read.dbf("tjovenes_iii_iv.dbf")
-jovenes_5 <- read.dbf("tjovenes_v.dbf")
-jovenes_6 <- read.dbf("tjovenes_vi.dbf")
-jovenes_7 <- read.dbf("tjovenes_vii_viii.dbf")
+# agrego las llaves para no dificultarme las tareas despues...
+viviendas <- read.dbf("tviviendas.dbf") %>% mutate("KEY" = paste0(CONTROL, VIV_SEL))
+
+demografia <- read.dbf("tsdem.dbf") %>% mutate("KEY" = paste0(CONTROL, VIV_SEL))
+
+jefes <- read.dbf("tjefehogar.dbf") %>% mutate("KEY" = paste0(CONTROL, VIV_SEL))
+
+jovenes_1 <- read.dbf("tjovenes_i_ii.dbf") %>% 
+              mutate("KEY" = paste0(CONTROL, VIV_SEL), 
+                     "KEY_U" = paste0(CONTROL, VIV_SEL, R_SEL))
+
+jovenes_3 <- read.dbf("tjovenes_iii_iv.dbf") %>% 
+              mutate("KEY" = paste0(CONTROL, VIV_SEL), 
+                     "KEY_U" = paste0(CONTROL, VIV_SEL, R_SEL))
+
+jovenes_5 <- read.dbf("tjovenes_v.dbf") %>% 
+              mutate("KEY" = paste0(CONTROL, VIV_SEL), 
+                     "KEY_U" = paste0(CONTROL, VIV_SEL, R_SEL))
+
+jovenes_6 <- read.dbf("tjovenes_vi.dbf") %>% 
+              mutate("KEY" = paste0(CONTROL, VIV_SEL), 
+                     "KEY_U" = paste0(CONTROL, VIV_SEL, R_SEL)) 
+
+jovenes_7 <- read.dbf("tjovenes_vii_viii.dbf") %>% 
+              mutate("KEY" = paste0(CONTROL, VIV_SEL), 
+                     "KEY_U" = paste0(CONTROL, VIV_SEL, R_SEL))
 
 #IMPORTANTE; 
 # Tener cuidado, por que uso indices de columnas para extraer data sets, 
@@ -29,14 +47,57 @@ jovenes_7 <- read.dbf("tjovenes_vii_viii.dbf")
 # De las situaciones descritas a continuación, dime por favor
 # ¿si enlo que va del año alguno de ellos...
 
-desmadres <- jovenes_3[,c(1:5,127:143)]
+P_amigos <- inner_join(jovenes_3[,c(127:143,197)], 
+                       demografia, 
+                       by = c("KEY_U", "KEY"))
 
 
 #Pregunta: Situaciones desmadrosas
 # Cuestionario jovenes
 # 4.6 De las situaciones descritas a continuación, dime por favor si...
 
-situaciones <- jovenes_3[,c(1:5,157:193)]
+P_situaciones <- jovenes_3[,c(1:5,157:193)]
+
+# Pregunta: cambiarte de casa  ----------------------------------------
+# Cuestionario jovenes
+# 5.3 Imagina que tú y tu familia tuvieran la oportunidad de mudarse a otra casa o departamento. 
+# Si pudieran hacerlo, se mudarían a...
+
+P_mudarte <- jovenes_5[,c("P5_3","KEY")]
+P_mudarte_xrazon <- P_mudarte %>% 
+  group_by(P5_3) %>%
+  summarise("CONTEO" = n_distinct(KEY))
+
+# graficar
+ggplot(order_axis(P_mudarte_xrazon, P5_3, CONTEO), 
+       aes(x = P5_3_o, 
+           y = CONTEO))+
+  geom_bar(stat = "identity", fill = "#A84A44")+
+  theme_eem()+
+  labs(title = "Si pudieras, te mudarías a...", 
+       x = "Lugar", 
+       y = "Respuestas")
+
+# Pregunta: hacer deporte  ----------------------------------------
+# Cuestionario jovenes
+# 5.13 En lo que va del año, 
+# ¿con qué frecuencia participas en esta asociación o grupo?
+#  respuestas de: Deportivo (futbol, baloncesto, voleibol, beisbol, baile, clases de zumba, etc.)
+
+P_deporte <- jovenes_5[,c("P5_13_2","KEY")]
+P_deporte_xfrec <- P_deporte %>% 
+  group_by(P5_13_2) %>%
+  summarise("CONTEO" = n_distinct(KEY))
+
+# graficar
+ggplot(order_axis(P_deporte_xfrec, P5_13_2, CONTEO), 
+       aes(x = P5_13_2_o, 
+           y = CONTEO))+
+  geom_bar(stat = "identity", fill = "#A84A44")+
+  theme_eem()+
+  labs(title = "Participación en actividad deportiva", 
+       x = "Lugar", 
+       y = "Respuestas")
 
 # no puede ser...
 #situaciones_emborracharte <- situaciones %>% 

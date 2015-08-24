@@ -21,6 +21,7 @@ output: pdf_document
 
 
 - Digits; 
+
   + 1234.567
   + 1 - THOUSANDS
   + 2 - HUNDREDS
@@ -60,7 +61,7 @@ output: pdf_document
 For which of the following functions is f(a+b)=f(b)+f(a) for all positive numbers a and b?
   A. f(x)=x^2 
   B. f(x)=x+1 
-  C. f(x)=√x 
+  C. f(x)=$sqrt(x)$ 
   D. f(x)=2/x 
   E. f(x)=-3x
 
@@ -86,9 +87,24 @@ For which of the following functions is f(a+b)=f(b)+f(a) for all positive number
 5. 100/75*5 = 100/15 = 20/3
 
 ### **Fractions, decimals (% increase/decrease)**
+
+- De gmatprep; 
+> When a certain tree was first planted, it was 4 feet tall and the height of the tree increased by a constant amount each year for the next 6 years. At the end of 6 year the tree was 1/5 taller then it was at the end of 4 year. By how many feet did the height of the tree increase each year
+
+1. Plantaron: 4 ft
+2. Terminó año 4: 4 + 4x (x es lo que crece cada año)
+3. Terminó año 6: 4 + 6x, pero dicen que esto también es 1/5 más que en el año 4:
+4. 4 + 6x = 4 + 4x + 1/5(4 + 4x)...
+5. Despejas para "x", 
+6. x = 2/3
+ 
 ### Absolute values
 ### **Ratios, fractions of universe**
 ### Conversions dimensional analysis
+
+- If the speed of X meters per second is equivalent to the speed of Y kilometers per hour, what is Y in terms of X? (1 kilometer=1000 meters)
+
+
 ### Groups
 
 - Con 2: T = G1 + G2 - B + N
@@ -134,7 +150,7 @@ For which of the following functions is f(a+b)=f(b)+f(a) for all positive number
 
 
 3. Tripletes;
-  + {1, 2, $\sqrt(3)$} 
+  + {1, 2, $sqrt(3)$} 
   + {3, 4, 5}
   + {4, 12, 13}
   + {7, 24, 25}
