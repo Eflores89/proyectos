@@ -9,7 +9,9 @@ library(ggplot2) #graphs
 library(eem) #graphs [devtools::install_github("eflores89/eem")]
 library(stringr) #reclassificar
 
-# agrego las llaves para no dificultarme las tareas despues...
+# Importar datos ----------------------------------- 
+# consultar en: http://www.inegi.org.mx/est/contenidos/proyectos/encuestas/hogares/especiales/ecopred/2014/default.aspx
+# agrego las llaves y otras variables, para no dificultarme las tareas despues...
 viviendas <- read.dbf("tviviendas.dbf") %>% 
   mutate("KEY" = paste0(CONTROL, VIV_SEL),
          #clasificar estado por region
@@ -45,11 +47,11 @@ jovenes_6 <- read.dbf("tjovenes_vi.dbf") %>%
 jovenes_7 <- read.dbf("tjovenes_vii_viii.dbf") %>% 
               mutate("KEY" = paste0(CONTROL, VIV_SEL), 
                      "KEY_U" = paste0(CONTROL, VIV_SEL, R_SEL))
-
+                     
+#---------------------------------------------------------------------
 #IMPORTANTE; 
 # Tener cuidado, por que uso indices de columnas para extraer data sets, 
 # si la fuente origen cambia esto ya no es válido
-
 #---------------------------------------------------------------------
 
 #Pregunta: tus amigos y su desmadre...
