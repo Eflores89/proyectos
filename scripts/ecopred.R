@@ -83,8 +83,11 @@ P_mudarte <- inner_join(jovenes_5[,c("P5_3", "KEY_U")],
                         by = "KEY_U")
 
 P_mudarte_xrazon <- P_mudarte %>% 
-  group_by(P5_3, EDAD, REGION) %>%
-  summarise("CONTEO" = n_distinct(KEY_U)) 
+  group_by(EDAD, REGION) %>%
+  mutate("CONTEO_TOTAL" = n_distinct(KEY_U)) %>%
+  group_by(P5_3, CONTEO_TOTAL, add = TRUE) %>%
+  summarise("CONTEO" = n_distinct(KEY_U)) %>%
+  mutate("PORCENTAJE" = CONTEO/CONTEO_TOTAL)
  
 # cambiar nombres...
 P_mudarte_xrazon$P5_3 <- str_replace_all(P_mudarte_xrazon$P5_3, pattern = "1", "Otra Colonia")
@@ -95,27 +98,19 @@ P_mudarte_xrazon$P5_3 <- str_replace_all(P_mudarte_xrazon$P5_3, pattern = "5", "
 P_mudarte_xrazon$P5_3 <- str_replace_all(P_mudarte_xrazon$P5_3, pattern = "9", "No sabe/NR")
 
 # graficar
-ggplot(order_axis(P_mudarte_xrazon, P5_3, CONTEO), 
-       aes(x = P5_3_o, 
-           y = CONTEO))+
-  geom_bar(stat = "identity", fill = "#A84A44")+
-  facet_grid(REGION ~ .)+
-  theme_eem()+
-  labs(title = "Si pudieras, te mudarías a...", 
-       x = "Lugar", 
-       y = "Respuestas")
-
-
 ggplot(P_mudarte_xrazon, 
        aes(x = EDAD, 
-           y = P5_3, 
-           size = CONTEO))+
-  geom_point(colour = "#A84A44")+
-  facet_grid(REGION ~ .)+
+           y = PORCENTAJE,
+           fill = P5_3))+
+  geom_bar(stat = "identity")+
+  facet_grid(. ~ REGION)+
   theme_eem()+
+  scale_fill_eem(20)+
+  ylim(0,1)+
+  scale_x_discrete(breaks=c(12, 15, 18, 21, 24, 27))+
   labs(title = "Si pudieras, te mudarías a...", 
-       x = "Lugar", 
-       y = "Respuestas")
+       x = "Edad", 
+       y = "% Respuestas")
 
 # Pregunta: hacer deporte  ----------------------------------------
 # Cuestionario jovenes
