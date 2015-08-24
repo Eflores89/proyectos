@@ -5,6 +5,7 @@ setwd(folder)
 # bibliotecas
 library(foreign) #para leer dbf
 library(dplyr) #para datos
+library(tidyr) #datos
 library(ggplot2) #graphs
 library(eem) #graphs [devtools::install_github("eflores89/eem")]
 library(stringr) #reclassificar
@@ -54,23 +55,6 @@ jovenes_7 <- read.dbf("tjovenes_vii_viii.dbf") %>%
 # si la fuente origen cambia esto ya no es válido
 #---------------------------------------------------------------------
 
-#Pregunta: tus amigos y su desmadre...
-# Cuestionario jovenes
-# 4.3 Piensa en tus mejores amigos o los compañeros con los que más convives. 
-# De las situaciones descritas a continuación, dime por favor
-# ¿si enlo que va del año alguno de ellos...
-
-P_amigos <- inner_join(jovenes_3[,c(127:143,197)], 
-                       demografia, 
-                       by = c("KEY_U", "KEY"))
-
-
-#Pregunta: Situaciones desmadrosas
-# Cuestionario jovenes
-# 4.6 De las situaciones descritas a continuación, dime por favor si...
-
-P_situaciones <- jovenes_3[,c(1:5,157:193)]
-
 # Pregunta: cambiarte de casa  ----------------------------------------
 # Cuestionario jovenes
 # 5.3 Imagina que tú y tu familia tuvieran la oportunidad de mudarse a otra casa o departamento. 
@@ -111,6 +95,50 @@ ggplot(P_mudarte_xrazon,
   labs(title = "Si pudieras, te mudarías a...", 
        x = "Edad", 
        y = "% Respuestas")
+
+# Pregunta: lo que sucede en tu barrio --------------------------------
+# 5.19 En lo que va del año, 
+# ¿qué tan frecuente has visto gente en tu colonia o barrio...
+
+P_sucede <- inner_join(jovenes_5[,c(118:133, 192)], 
+                        inner_join(demografia, 
+                                   viviendas, 
+                                   by = "KEY"), 
+                        by = "KEY_U")
+P_sucede <- P_sucede[, c(1:18,25,26,27,28,29,40,41,56)]
+
+# TODOS LOS TIPOS
+P_sucede_xfrec <- P_sucede %>% 
+  gather(PREGUNTA, VALOR, 2:17) %>%
+  filter(VALOR<9)%>%
+  group_by(REGION, PREGUNTA, EDAD) %>%
+  summarise("FREC_PROMEDIO" = mean(as.numeric(VALOR)))
+
+# Partiendo por percepción de peligro
+  #minima: tomando alcohol, bloqueando calle, vendiendo piratería, peleas vecinos
+P_sucede_xfrec_minimo <- P_sucede_xfrec %>%
+  filter(PREGUNTA == "P5_19_1" | PREGUNTA == "P5_19_6" | PREGUNTA == "P5_19_9" | PREGUNTA == "P5_19_11")
+
+
+  #intensa: disparando armas, drogandose, extorsiones
+P_sucede_xfrec_intenso <- P_sucede_xfrec %>%
+  filter(PREGUNTA == "P5_19_16" | PREGUNTA == "P5_19_8" | PREGUNTA == "P5_19_15")
+
+
+ggplot(P_sucede_xfrec_intenso,
+       aes(x = PREGUNTA, 
+           y = FREC_PROMEDIO,
+           colour = EDAD))+
+  geom_point()+
+  facet_grid(. ~ REGION)
+
+
+
+
+
+
+
+
 
 # Pregunta: hacer deporte  ----------------------------------------
 # Cuestionario jovenes
@@ -163,3 +191,22 @@ ggplot(order_axis(P_deporte_xfrec, P5_13_2, CONTEO),
 
 # 8.3 ¿Qué tan sencillo consideras que en un futuro, tú...
 
+
+
+
+#Pregunta: tus amigos y su desmadre...
+# Cuestionario jovenes
+# 4.3 Piensa en tus mejores amigos o los compañeros con los que más convives. 
+# De las situaciones descritas a continuación, dime por favor
+# ¿si enlo que va del año alguno de ellos...
+
+P_amigos <- inner_join(jovenes_3[,c(127:143,197)], 
+                       demografia, 
+                       by = c("KEY_U", "KEY"))
+
+
+#Pregunta: Situaciones desmadrosas
+# Cuestionario jovenes
+# 4.6 De las situaciones descritas a continuación, dime por favor si...
+
+P_situaciones <- jovenes_3[,c(1:5,157:193)]
