@@ -7,9 +7,18 @@ library(foreign) #para leer dbf
 library(dplyr) #para datos
 library(ggplot2) #graphs
 library(eem) #graphs [devtools::install_github("eflores89/eem")]
+library(stringr) #reclassificar
 
 # agrego las llaves para no dificultarme las tareas despues...
-viviendas <- read.dbf("tviviendas.dbf") %>% mutate("KEY" = paste0(CONTROL, VIV_SEL))
+viviendas <- read.dbf("tviviendas.dbf") %>% 
+  mutate("KEY" = paste0(CONTROL, VIV_SEL),
+         #clasificar estado por region
+         "REGION" = ifelse(ENT == "02"|ENT == "03"|ENT == "05"|ENT == "08"|ENT == "19"|
+                             ENT == "25"|ENT == "26"|ENT == "28", "Norte", 
+                    ifelse(ENT == "01"|ENT == "01"|ENT == "01", "Centro-Norte",
+                    ifelse(ENT == "01"|ENT == "01"|ENT == "01", "Centro",
+                    ifelse(ENT == "01"|ENT == "01"|ENT == "01", "Sur",
+                    ifelse(ENT == "01"|ENT == "01"|ENT == "01", "Centro-Sur", "otro"))))))
 
 demografia <- read.dbf("tsdem.dbf") %>% mutate("KEY" = paste0(CONTROL, VIV_SEL),
                                                "KEY_U" = paste0(CONTROL, VIV_SEL, N_REN))
@@ -64,20 +73,30 @@ P_situaciones <- jovenes_3[,c(1:5,157:193)]
 # 5.3 Imagina que tú y tu familia tuvieran la oportunidad de mudarse a otra casa o departamento. 
 # Si pudieran hacerlo, se mudarían a...
 
-P_mudarte <- inner_join(jovenes_5[,c("P5_3","KEY", "KEY_U")], 
-                        demografia, by = "KEY_U")
+P_mudarte <- inner_join(jovenes_5[,c("P5_3", "KEY_U")], 
+                        inner_join(demografia, 
+                                   viviendas, 
+                                   by = "KEY"), 
+                        by = "KEY_U")
+
 P_mudarte_xrazon <- P_mudarte %>% 
-  group_by(P5_3, EDAD) %>%
+  group_by(P5_3, EDAD, REGION) %>%
   summarise("CONTEO" = n_distinct(KEY_U)) 
  
-# falta cambiar nombres....  funcion eem ?
-
+# cambiar nombres...
+P_mudarte_xrazon$P5_3 <- str_replace_all(P_mudarte_xrazon$P5_3, pattern = "1", "Otra Colonia")
+P_mudarte_xrazon$P5_3 <- str_replace_all(P_mudarte_xrazon$P5_3, pattern = "2", "Otra Ciudad")
+P_mudarte_xrazon$P5_3 <- str_replace_all(P_mudarte_xrazon$P5_3, pattern = "3", "Otro Estado")
+P_mudarte_xrazon$P5_3 <- str_replace_all(P_mudarte_xrazon$P5_3, pattern = "4", "Otro País")
+P_mudarte_xrazon$P5_3 <- str_replace_all(P_mudarte_xrazon$P5_3, pattern = "5", "No mudaría")
+P_mudarte_xrazon$P5_3 <- str_replace_all(P_mudarte_xrazon$P5_3, pattern = "9", "No sabe/NR")
 
 # graficar
 ggplot(order_axis(P_mudarte_xrazon, P5_3, CONTEO), 
        aes(x = P5_3_o, 
            y = CONTEO))+
   geom_bar(stat = "identity", fill = "#A84A44")+
+  facet_grid(REGION ~ .)+
   theme_eem()+
   labs(title = "Si pudieras, te mudarías a...", 
        x = "Lugar", 
@@ -89,6 +108,7 @@ ggplot(P_mudarte_xrazon,
            y = P5_3, 
            size = CONTEO))+
   geom_point(colour = "#A84A44")+
+  facet_grid(REGION ~ .)+
   theme_eem()+
   labs(title = "Si pudieras, te mudarías a...", 
        x = "Lugar", 
