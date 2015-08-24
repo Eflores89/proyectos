@@ -11,7 +11,8 @@ library(eem) #graphs [devtools::install_github("eflores89/eem")]
 # agrego las llaves para no dificultarme las tareas despues...
 viviendas <- read.dbf("tviviendas.dbf") %>% mutate("KEY" = paste0(CONTROL, VIV_SEL))
 
-demografia <- read.dbf("tsdem.dbf") %>% mutate("KEY" = paste0(CONTROL, VIV_SEL))
+demografia <- read.dbf("tsdem.dbf") %>% mutate("KEY" = paste0(CONTROL, VIV_SEL),
+                                               "KEY_U" = paste0(CONTROL, VIV_SEL, N_REN))
 
 jefes <- read.dbf("tjefehogar.dbf") %>% mutate("KEY" = paste0(CONTROL, VIV_SEL))
 
@@ -63,16 +64,31 @@ P_situaciones <- jovenes_3[,c(1:5,157:193)]
 # 5.3 Imagina que tú y tu familia tuvieran la oportunidad de mudarse a otra casa o departamento. 
 # Si pudieran hacerlo, se mudarían a...
 
-P_mudarte <- jovenes_5[,c("P5_3","KEY")]
+P_mudarte <- inner_join(jovenes_5[,c("P5_3","KEY", "KEY_U")], 
+                        demografia, by = "KEY_U")
 P_mudarte_xrazon <- P_mudarte %>% 
-  group_by(P5_3) %>%
-  summarise("CONTEO" = n_distinct(KEY))
+  group_by(P5_3, EDAD) %>%
+  summarise("CONTEO" = n_distinct(KEY_U)) 
+ 
+# falta cambiar nombres....  funcion eem ?
+
 
 # graficar
 ggplot(order_axis(P_mudarte_xrazon, P5_3, CONTEO), 
        aes(x = P5_3_o, 
            y = CONTEO))+
   geom_bar(stat = "identity", fill = "#A84A44")+
+  theme_eem()+
+  labs(title = "Si pudieras, te mudarías a...", 
+       x = "Lugar", 
+       y = "Respuestas")
+
+
+ggplot(P_mudarte_xrazon, 
+       aes(x = EDAD, 
+           y = P5_3, 
+           size = CONTEO))+
+  geom_point(colour = "#A84A44")+
   theme_eem()+
   labs(title = "Si pudieras, te mudarías a...", 
        x = "Lugar", 
