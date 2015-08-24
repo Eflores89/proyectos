@@ -20,6 +20,16 @@ output: pdf_document
 ```
 
 
+- Digits; 
+  + 1234.567
+  + 1 - THOUSANDS
+  + 2 - HUNDREDS
+  + 3 - TENS
+  + 4 - UNITS
+  + 5 - TENTHS
+  + 6 - HUNDREDTHS
+  + 7 - THOUSANDTHS 
+
 ### **Exponents and Roots**
 
 - Siempre te van a poner diferentes exponentes/bases, debes; 
@@ -46,6 +56,16 @@ output: pdf_document
 
 
 ### **Functions**
+
+For which of the following functions is f(a+b)=f(b)+f(a) for all positive numbers a and b?
+  A. f(x)=x^2 
+  B. f(x)=x+1 
+  C. f(x)=√x 
+  D. f(x)=2/x 
+  E. f(x)=-3x
+
+
+
 ### Statistics
 ### **(x+y) and (x-y)**
 ### Mixture formulas
@@ -105,7 +125,6 @@ output: pdf_document
       *  .:. |a-b| < c < |a+b| .:. 1 < c < 7
 
 
-
 2. Triangulos; 
   + 2 lados iguales = isoceles (perfecto = 45º, 45º y 90º = lados(1,1,$sqrt{2}$))
   + todos iguales = equilatero
@@ -115,6 +134,7 @@ output: pdf_document
 
 
 3. Tripletes;
+  + {1, 2, $\sqrt(3)$} 
   + {3, 4, 5}
   + {4, 12, 13}
   + {7, 24, 25}
@@ -173,6 +193,9 @@ output: pdf_document
 |E|?|e|
 |O|?|o|
 
+
+- Reciprocos; 
+(a)*(b)==1 .:. b es reciproco de a
 
 ****
 
