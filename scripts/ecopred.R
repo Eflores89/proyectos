@@ -14,11 +14,12 @@ viviendas <- read.dbf("tviviendas.dbf") %>%
   mutate("KEY" = paste0(CONTROL, VIV_SEL),
          #clasificar estado por region
          "REGION" = ifelse(ENT == "02"|ENT == "03"|ENT == "05"|ENT == "08"|ENT == "19"|
-                             ENT == "25"|ENT == "26"|ENT == "28", "Norte", 
-                    ifelse(ENT == "01"|ENT == "01"|ENT == "01", "Centro-Norte",
-                    ifelse(ENT == "01"|ENT == "01"|ENT == "01", "Centro",
-                    ifelse(ENT == "01"|ENT == "01"|ENT == "01", "Sur",
-                    ifelse(ENT == "01"|ENT == "01"|ENT == "01", "Centro-Sur", "otro"))))))
+                           ENT == "25"|ENT == "26"|ENT == "28", "Norte", 
+                    ifelse(ENT == "01"|ENT == "06"|ENT == "10"|ENT == "11"|ENT == "14"
+                          |ENT == "18"|ENT == "24"|ENT == "32", "Centro-Norte",
+                    ifelse(ENT == "09"|ENT == "15", "Centro",
+                    ifelse(ENT == "12"|ENT == "13"|ENT == "16"|ENT == "17"|ENT == "21"
+                          |ENT == "22"|ENT == "29", "Centro-Sur","Sur-Sureste")))))
 
 demografia <- read.dbf("tsdem.dbf") %>% mutate("KEY" = paste0(CONTROL, VIV_SEL),
                                                "KEY_U" = paste0(CONTROL, VIV_SEL, N_REN))
