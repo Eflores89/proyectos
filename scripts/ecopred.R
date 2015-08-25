@@ -107,67 +107,163 @@ P_sucede <- inner_join(jovenes_5[,c(118:133, 192)],
                         by = "KEY_U")
 P_sucede <- P_sucede[, c(1:18,25,26,27,28,29,40,41,56)]
 
-# TODOS LOS TIPOS
+# todos los tipos
 P_sucede_xfrec <- P_sucede %>% 
   gather(PREGUNTA, VALOR, 2:17) %>%
-  filter(VALOR<9)%>%
+  filter(VALOR<9) %>%
   group_by(REGION, PREGUNTA, EDAD) %>%
-  summarise("FREC_PROMEDIO" = mean(as.numeric(VALOR)))
+  mutate("CONTEO_TOTAL" = n_distinct(KEY_U)) %>%
+  group_by(CONTEO_TOTAL, VALOR, add = TRUE) %>%
+  summarise("CONTEO" = n_distinct(KEY_U)) %>%
+  mutate("PORCENTAJE" = CONTEO/CONTEO_TOTAL)
+
+P_sucede_xfrec$VALOR <- str_replace_all(P_sucede_xfrec$VALOR, pattern = "1", "Muy Frec.")
+P_sucede_xfrec$VALOR <- str_replace_all(P_sucede_xfrec$VALOR, pattern = "2", "Frecuente")
+P_sucede_xfrec$VALOR <- str_replace_all(P_sucede_xfrec$VALOR, pattern = "3", "Poco Frec.")
+P_sucede_xfrec$VALOR <- str_replace_all(P_sucede_xfrec$VALOR, pattern = "4", "Nada Frec.")
 
 # Partiendo por percepción de peligro
   #minima: tomando alcohol, bloqueando calle, vendiendo piratería, peleas vecinos
 P_sucede_xfrec_minimo <- P_sucede_xfrec %>%
   filter(PREGUNTA == "P5_19_1" | PREGUNTA == "P5_19_6" | PREGUNTA == "P5_19_9" | PREGUNTA == "P5_19_11")
 
+P_sucede_xfrec_minimo$PREGUNTA <- str_replace_all(P_sucede_xfrec_minimo$PREGUNTA, pattern = "P5_19_11", "Discusiones")
+P_sucede_xfrec_minimo$PREGUNTA <- str_replace_all(P_sucede_xfrec_minimo$PREGUNTA, pattern = "P5_19_1", "Ruido")
+P_sucede_xfrec_minimo$PREGUNTA <- str_replace_all(P_sucede_xfrec_minimo$PREGUNTA, pattern = "P5_19_6", "Piratería")
+P_sucede_xfrec_minimo$PREGUNTA <- str_replace_all(P_sucede_xfrec_minimo$PREGUNTA, pattern = "P5_19_9", "Bloqueando calle")
+
+ggplot(P_sucede_xfrec_minimo,
+       aes(x = EDAD, 
+           y = PORCENTAJE, 
+           fill = VALOR))+
+  geom_bar(stat = "identity")+
+  facet_grid(PREGUNTA ~ REGION)+
+  theme_eem()+
+  scale_fill_eem(20)+
+  scale_x_discrete(breaks=c(12, 15, 18, 21, 24, 27))+
+  labs(title = "¿Qué tan frecuente...?", 
+       x = "Edad", 
+       y = "% Respuestas")
 
   #intensa: disparando armas, drogandose, extorsiones
 P_sucede_xfrec_intenso <- P_sucede_xfrec %>%
   filter(PREGUNTA == "P5_19_16" | PREGUNTA == "P5_19_8" | PREGUNTA == "P5_19_15")
 
+P_sucede_xfrec_intenso$PREGUNTA <- str_replace_all(P_sucede_xfrec_intenso$PREGUNTA, pattern = "P5_19_8", "Drogas")
+P_sucede_xfrec_intenso$PREGUNTA <- str_replace_all(P_sucede_xfrec_intenso$PREGUNTA, pattern = "P5_19_15", "Extorsión")
+P_sucede_xfrec_intenso$PREGUNTA <- str_replace_all(P_sucede_xfrec_intenso$PREGUNTA, pattern = "P5_19_16", "Disparos")
 
 ggplot(P_sucede_xfrec_intenso,
-       aes(x = PREGUNTA, 
-           y = FREC_PROMEDIO,
-           colour = EDAD))+
-  geom_point()+
-  facet_grid(. ~ REGION)
-
-
-
-
-
-
-
-
-
-# Pregunta: hacer deporte  ----------------------------------------
-# Cuestionario jovenes
-# 5.13 En lo que va del año, 
-# ¿con qué frecuencia participas en esta asociación o grupo?
-#  respuestas de: Deportivo (futbol, baloncesto, voleibol, beisbol, baile, clases de zumba, etc.)
-
-P_deporte <- jovenes_5[,c("P5_13_2","KEY")]
-P_deporte_xfrec <- P_deporte %>% 
-  group_by(P5_13_2) %>%
-  summarise("CONTEO" = n_distinct(KEY))
-
-# graficar
-ggplot(order_axis(P_deporte_xfrec, P5_13_2, CONTEO), 
-       aes(x = P5_13_2_o, 
-           y = CONTEO))+
-  geom_bar(stat = "identity", fill = "#A84A44")+
+       aes(x = EDAD, 
+           y = PORCENTAJE, 
+           fill = VALOR))+
+  geom_bar(stat = "identity")+
+  facet_grid(PREGUNTA ~ REGION)+
   theme_eem()+
-  labs(title = "Participación en actividad deportiva", 
-       x = "Lugar", 
-       y = "Respuestas")
+  scale_fill_eem(20)+
+  scale_x_discrete(breaks=c(12, 15, 18, 21, 24, 27))+
+  labs(title = "¿Qué tan frecuente...?", 
+       x = "Edad", 
+       y = "% Respuestas")
 
-# no puede ser...
-#situaciones_emborracharte <- situaciones %>% 
- #                 mutate("KEY" = paste0(CONTROL,VIV_SEL)) %>%
-  #                #solo los que si han tomado/peda
-   #               filter(P4_6_2==1) %>%
-    #              select("EdadPrimeraVez" = P4_6_2A, 
-     #                    "Actual"=P4_6_2B) 
+  #Inseguridad: prostitución, asaltos, robos 
+P_sucede_xfrec_inseguro <- P_sucede_xfrec %>%
+  filter(PREGUNTA == "P5_19_12" | PREGUNTA == "P5_19_13" | PREGUNTA == "P5_19_14")
+
+P_sucede_xfrec_inseguro$PREGUNTA <- str_replace_all(P_sucede_xfrec_inseguro$PREGUNTA, pattern = "P5_19_12", "Prostitución")
+P_sucede_xfrec_inseguro$PREGUNTA <- str_replace_all(P_sucede_xfrec_inseguro$PREGUNTA, pattern = "P5_19_13", "Robando casas")
+P_sucede_xfrec_inseguro$PREGUNTA <- str_replace_all(P_sucede_xfrec_inseguro$PREGUNTA, pattern = "P5_19_14", "Asaltando Personas")
+
+ggplot(P_sucede_xfrec_inseguro,
+       aes(x = EDAD, 
+           y = PORCENTAJE, 
+           fill = VALOR))+
+  geom_bar(stat = "identity")+
+  facet_grid(PREGUNTA ~ REGION)+
+  theme_eem()+
+  scale_fill_eem(20)+
+  scale_x_discrete(breaks=c(12, 15, 18, 21, 24, 27))+
+  labs(title = "¿Qué tan frecuente...?", 
+       x = "Edad", 
+       y = "% Respuestas")
+
+
+# Pregunta: contra - medidas  --------------------------------
+# Ante la situación... (RESPUESTA 5.19)
+# ¿qué pasa cuando pasa x...?
+
+P_medidas <- inner_join(jovenes_5[,c(134:149, 192)], 
+                       inner_join(demografia, 
+                                  viviendas, 
+                                  by = "KEY"), 
+                       by = "KEY_U")
+P_medidas <- P_medidas[, c(1:18,25:29,40,41,56)]
+
+names(P_medidas) <- c(names(P_medidas)[1], 
+                      "RUIDO", "GRAFITI", "VENTANAS", "ARRANCONES",
+                      "ALCOHOL","PIRATERIA","VENTA DROGA", "DROGA", "BLOQUEO", 
+                      "PELEAS", "DISCUSIONES", "PROSTITUCION", 
+                      "ROBANDO CASA", "ASALTO PERSONA", "EXTORSION", "DISPAROS", 
+                      names(P_medidas)[18:length(names(P_medidas))])
+                      
+P_medidas_xrazon <- P_medidas %>% 
+  gather(PREGUNTA, VALOR, 2:17) %>%
+  filter(VALOR<9) %>%
+  filter(!VALOR == "<NA>") %>%
+  group_by(REGION, PREGUNTA, EDAD) %>%
+  mutate("CONTEO_TOTAL" = n_distinct(KEY_U)) %>%
+  group_by(CONTEO_TOTAL, VALOR, add = TRUE) %>%
+  summarise("CONTEO" = n_distinct(KEY_U)) %>%
+  mutate("PORCENTAJE" = CONTEO/CONTEO_TOTAL)
+
+ggplot(P_medidas_xrazon,
+       aes(x = EDAD, 
+           y = PORCENTAJE, 
+           fill = VALOR))+
+  geom_bar(stat = "identity")+
+  facet_grid(PREGUNTA ~ REGION)+
+  theme_eem()+
+  scale_fill_eem(20)+
+  scale_x_discrete(breaks=c(12, 15, 18, 21, 24, 27))+
+  labs(title = "¿Qué tan frecuente...?", 
+       x = "Edad", 
+       y = "% Respuestas")
+
+# solo algunas situaciones... 
+P_medidas_xrazon_algunas <- P_medidas_xrazon %>% 
+  filter(PREGUNTA == "RUIDO" | PREGUNTA == "GRAFITI" | PREGUNTA == "ROBANDO CASA" |
+         PREGUNTA == "ASALTO PERSONA" | PREGUNTA == "EXTORSION" | PREGUNTA == "DISPAROS")
+
+P_medidas_xrazon_algunas$VALOR <- str_replace_all(P_medidas_xrazon_algunas$VALOR, pattern = "1", "Vecinos dicen algo")
+P_medidas_xrazon_algunas$VALOR <- str_replace_all(P_medidas_xrazon_algunas$VALOR, pattern = "2", "Vecinos lo resuelven")
+P_medidas_xrazon_algunas$VALOR <- str_replace_all(P_medidas_xrazon_algunas$VALOR, pattern = "3", "Policía interviene")
+P_medidas_xrazon_algunas$VALOR <- str_replace_all(P_medidas_xrazon_algunas$VALOR, pattern = "4", "Nada")
+
+ggplot(P_medidas_xrazon_algunas,
+       aes(x = EDAD, 
+           y = PORCENTAJE, 
+           fill = VALOR))+
+  geom_bar(stat = "identity")+
+  facet_grid(PREGUNTA ~ REGION)+
+  theme_eem()+
+  scale_fill_eem(20)+
+  scale_x_discrete(breaks=c(12, 15, 18, 21, 24, 27))+
+  labs(title = "Ante la situación, ¿Qué se hace?", 
+       x = "Edad", 
+       y = "% Respuestas")
+
+
+# Pregunta: ¿Y la policía?  ------------------------------------
+# 6.5 Si alguien cometiera un delito en tu colonia o barrio, 
+# ¿La policía...
+
+
+
+
+# Pregunta: ¿dónde estas seguro? --------------------------------￼￼￼￼￼￼￼
+# 6.2 En términos de delincuencia, 
+# dime si te sientes seguro o inseguro en...
+
 
 
 
