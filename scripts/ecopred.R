@@ -252,17 +252,14 @@ ggplot(P_medidas_xrazon_algunas,
        x = "Edad", 
        y = "% Respuestas")
 
+# -------------------------------------------------
+# Predecir con ML Algo
+library(randomForest)
+library(rpart)
+library(partykit)
 
-# Pregunta: ¿Y la policía?  ------------------------------------
-# 6.5 Si alguien cometiera un delito en tu colonia o barrio, 
-# ¿La policía...
-
-
-
-
-# Pregunta: ¿dónde estas seguro? --------------------------------￼￼￼￼￼￼￼
-# 6.2 En términos de delincuencia, 
-# dime si te sientes seguro o inseguro en...
+# Hacer data frame con info
+modelo <- randomForest()
 
 
 
