@@ -280,50 +280,10 @@ df_mod$P5_3 <- vapply(df_mod$P5_3,
 # mientras
 names(df_mod)<-c(names(df_mod)[1:6],"VENTA_DROGA", names(df_mod)[8:12],"ROBANDO_CASA","ASALTO_PERSONA",names(df_mod)[15:41])
 
+i <- sapply(df_mod, is.character)
+df_mod[i] <- lapply(df_mod[i], as.factor)
+
 modelo <- randomForest(as.factor(P5_3) ~ .,
                        data = df_mod,
                        importance = TRUE, 
                        ntree = 2000)
-
-
-
-
-# -------------------------------------------------
-
-## con gps estaría interesante; 
-# ¿Qué crees que piensan otras personas de la gente que vive en tu colonia?
-
-## 
-#5.11 Actualmente, ¿participas en algún tipo de actividad CIRCULE UN SOLO CÓDIGO
-#o formas parte de un grupo, programa o campaña al
-#interior de tu colonia o barrio (artístico, deportivo,
- #                                religioso, de apoyo social, político, de salud, de
-  #                               fomento económico, profesional, comunitario o de
-   #                              prevención de la violencia)?
-
-
-
-# En lo que va del año, ¿qué tan frecuente has visto gente en tu colonia o barrio...
-
-
-# 8.3 ¿Qué tan sencillo consideras que en un futuro, tú...
-
-
-
-
-#Pregunta: tus amigos y su desmadre...
-# Cuestionario jovenes
-# 4.3 Piensa en tus mejores amigos o los compañeros con los que más convives. 
-# De las situaciones descritas a continuación, dime por favor
-# ¿si enlo que va del año alguno de ellos...
-
-P_amigos <- inner_join(jovenes_3[,c(127:143,197)], 
-                       demografia, 
-                       by = c("KEY_U", "KEY"))
-
-
-#Pregunta: Situaciones desmadrosas
-# Cuestionario jovenes
-# 4.6 De las situaciones descritas a continuación, dime por favor si...
-
-P_situaciones <- jovenes_3[,c(1:5,157:193)]
