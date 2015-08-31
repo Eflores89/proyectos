@@ -253,13 +253,37 @@ ggplot(P_medidas_xrazon_algunas,
        y = "% Respuestas")
 
 # -------------------------------------------------
-# Predecir con ML Algo
+# Predecir con bosque
 library(randomForest)
 library(rpart)
 library(partykit)
 
 # Hacer data frame con info
-modelo <- randomForest()
+df_mod <- inner_join(P_medidas, 
+                     P_mudarte, by = "KEY_U") %>%
+  inner_join(., P_sucede, by = "KEY_U") %>% 
+  select(c(2:17,27,67:91)) %>%
+  select(-KEY)
+
+# hacer factores a character para manipular.
+i <- sapply(df_mod, is.factor)
+df_mod[i] <- lapply(df_mod[i], as.character)
+
+df_mod[,c(1:16)][is.na(df_mod[,c(1:16)])]<-0
+
+# Información generada de si o no...
+# mudarte 0 = No, 1 = Si
+df_mod$P5_3 <- vapply(df_mod$P5_3, 
+                      function(x) {if(x=="1" | x=="2" | x=="3" | x=="4")
+                        {1} else {0}}, 
+                      FUN.VALUE=double(1)) 
+# mientras
+names(df_mod)<-c(names(df_mod)[1:6],"VENTA_DROGA", names(df_mod)[8:12],"ROBANDO_CASA","ASALTO_PERSONA",names(df_mod)[15:41])
+
+modelo <- randomForest(as.factor(P5_3) ~ .,
+                       data = df_mod,
+                       importance = TRUE, 
+                       ntree = 2000)
 
 
 
