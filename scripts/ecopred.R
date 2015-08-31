@@ -287,3 +287,5 @@ modelo <- randomForest(as.factor(P5_3) ~ .,
                        data = df_mod,
                        importance = TRUE, 
                        ntree = 2000)
+
+importancia <- modelo$importance
