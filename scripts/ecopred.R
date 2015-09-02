@@ -96,6 +96,47 @@ ggplot(P_mudarte_xrazon,
        x = "Edad", 
        y = "% Respuestas")
 
+# graficar por educación
+P_mudarte_xed <- P_mudarte %>% 
+  group_by(NIV, REGION) %>%
+  mutate("CONTEO_TOTAL" = n_distinct(KEY_U)) %>%
+  group_by(P5_3, CONTEO_TOTAL, add = TRUE) %>%
+  summarise("CONTEO" = n_distinct(KEY_U)) %>%
+  mutate("PORCENTAJE" = CONTEO/CONTEO_TOTAL) %>%
+  arrange(NIV)
+
+# cambiar nombres...
+P_mudarte_xed$P5_3 <- str_replace_all(P_mudarte_xed$P5_3, pattern = "1", "Otra Colonia")
+P_mudarte_xed$P5_3 <- str_replace_all(P_mudarte_xed$P5_3, pattern = "2", "Otra Ciudad")
+P_mudarte_xed$P5_3 <- str_replace_all(P_mudarte_xed$P5_3, pattern = "3", "Otro Estado")
+P_mudarte_xed$P5_3 <- str_replace_all(P_mudarte_xed$P5_3, pattern = "4", "Otro País")
+P_mudarte_xed$P5_3 <- str_replace_all(P_mudarte_xed$P5_3, pattern = "5", "No mudaría")
+P_mudarte_xed$P5_3 <- str_replace_all(P_mudarte_xed$P5_3, pattern = "9", "No sabe/NR")
+
+P_mudarte_xed$NIV <- str_replace_all(P_mudarte_xed$NIV, pattern = "0$", "1.Ninguno")
+P_mudarte_xed$NIV <- str_replace_all(P_mudarte_xed$NIV, pattern = "1$", "2.PreEscolar")
+P_mudarte_xed$NIV <- str_replace_all(P_mudarte_xed$NIV, pattern = "2$", "3.Primaria")
+P_mudarte_xed$NIV <- str_replace_all(P_mudarte_xed$NIV, pattern = "3$", "4.Secundaria")
+P_mudarte_xed$NIV <- str_replace_all(P_mudarte_xed$NIV, pattern = "4$", "5.Carrera Tec+Secu")
+P_mudarte_xed$NIV <- str_replace_all(P_mudarte_xed$NIV, pattern = "5$", "6.Normal")
+P_mudarte_xed$NIV <- str_replace_all(P_mudarte_xed$NIV, pattern = "6$", "7.Prepa")
+P_mudarte_xed$NIV <- str_replace_all(P_mudarte_xed$NIV, pattern = "7$", "8.Carrera Tec+Prepa")
+P_mudarte_xed$NIV <- str_replace_all(P_mudarte_xed$NIV, pattern = "8$", "9.Licenciatura")
+P_mudarte_xed$NIV <- str_replace_all(P_mudarte_xed$NIV, pattern = "9$", "99. >Maestria")
+
+ggplot(P_mudarte_xed, 
+       aes(x = NIV, 
+           y = PORCENTAJE,
+           fill = P5_3))+
+  geom_bar(stat = "identity")+
+  theme_eem()+
+  scale_fill_eem(20)+
+  ylim(0,1)+
+  labs(title = "Si pudieras, te mudarías a...", 
+       x = "Nivel Ed", 
+       y = "% Respuestas")
+
+
 # Pregunta: lo que sucede en tu barrio --------------------------------
 # 5.19 En lo que va del año, 
 # ¿qué tan frecuente has visto gente en tu colonia o barrio...
@@ -301,5 +342,3 @@ modelo <- randomForest(as.factor(P5_3) ~ .,
                        ntree = 2000)
 # graficar las importancias...
 randomForest::varImpPlot(modelo, n.var = 20)
-
-
