@@ -109,16 +109,16 @@ Artículo para EEM: http://www.enelmargen.org/2015/07/datos-de-bajas-de-las-fuer
 
 + `bajas` - Bajas de las Fuerzas Armadas de México por razón y rango. Hasta marzo-2015.
 
-**Fuentes:** Secretaría de la Defensa Nacional (SEDENA). (http://www.sedena.gob.mx/transparencia/personal-dado-de-baja-por-diferentes-motivos)
+**Fuente:** Secretaría de la Defensa Nacional (SEDENA). (http://www.sedena.gob.mx/transparencia/personal-dado-de-baja-por-diferentes-motivos)
 ### baches
 Artículo para EEM: http://www.enelmargen.org/2015/08/como-combatir-los-baches-en-monterrey.html
 
 + `baches` - Estadísticas del DENUE por cada bache reportado a traves del Centro de Integración Ciudadana (CIC) en Monterrey.
 
-**Fuentes:** Centro de Integración Ciudadna (CIC) e INEGI (API del DENUE usando el paquete inegiR). 
+**Fuente:** Centro de Integración Ciudadna (CIC) e INEGI (API del DENUE usando el paquete inegiR). 
 ### imss
 Datos para proyectos de consultoría. Disponibles en: http://www.imss.gob.mx/conoce-al-imss/cubos 
 
 + `imss` - Afiliados por Estado, por mes desde el año 2000.
 
-**Fuentes:** Instituto Mexicano del Seguro Social. 
+**Fuente:** Instituto Mexicano del Seguro Social. 
