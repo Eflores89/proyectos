@@ -116,3 +116,9 @@ Artículo para EEM: http://www.enelmargen.org/2015/08/como-combatir-los-baches-e
 + `baches` - Estadísticas del DENUE por cada bache reportado a traves del Centro de Integración Ciudadana (CIC) en Monterrey.
 
 **Fuentes:** Centro de Integración Ciudadna (CIC) e INEGI (API del DENUE usando el paquete inegiR). 
+### imss
+Datos para proyectos de consultoría. Disponibles en: http://www.imss.gob.mx/conoce-al-imss/cubos 
+
++ `imss` - Afiliados por Estado, por mes desde el año 2000.
+
+**Fuentes:** Instituto Mexicano del Seguro Social. 
