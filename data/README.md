@@ -122,3 +122,10 @@ Datos para proyectos de consultoría. Disponibles en: http://www.imss.gob.mx/con
 + `imss` - Afiliados por Estado, por mes desde el año 2000.
 
 **Fuente:** Instituto Mexicano del Seguro Social. 
+### tweets
+Recopilación de 286 mil tweets en el norte de México y sur de Estados Unidos durante días aleatorios del 2014 (Junio a Diciembre). Todos los tweets cuentan con un indicador de sexo, dónde 99="desconocido" y 1="mujer".
+
++ `tweets_mx_holanda` - Tweets durante el partido de México - Holanda de la copa mundial (29-junio-2014).
++ `tweets_mx` - Tweets recopilados durante diferentes días y horas, incluyendo la campaña #YaMeCanse (diciembre 2014) y los tweets de México-Holanda. 
+
+**Fuente:** API de Twitter, usando el paquete de TwitteR para R. 
