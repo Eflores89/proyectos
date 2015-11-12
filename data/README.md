@@ -129,3 +129,21 @@ Recopilación de 286 mil tweets en el norte de México y sur de Estados Unidos d
 + `tweets_mx` - Tweets recopilados durante diferentes días y horas, incluyendo la campaña #YaMeCanse (diciembre 2014) y los tweets de México-Holanda. 
 
 **Fuente:** API de Twitter, usando el paquete de TwitteR para R. 
+### enigh
+Tabulados básicos del ENIGH (Encuesta Nacional de Ingresos y Gastos del Hogar) 2012 y 2014.
+
++ `enigh_tidy` - Tabulados básicos en formato tidy para consultar en R. Valores por hogar, gasto, décil y año.
+
+**Fuente:** INEGI
+### empresas mex
+Tabulado básico de censo económico 2014.
+
++ `empresas_mex` - Tabulados básicos en formato tidy para consultar en R de censo económico 2014.
+
+**Fuente:** [INEGI](http://www.inegi.org.mx/est/contenidos/proyectos/ce/ce2014/default.aspx). 
+### gabinetes
+Edad de integrantes de gabinete presidencial, usado en gráfia de Reporte Índigo impreso.
+
++ `gabinetes` - Año de nacimiento por integrante de gabinete presidencial desde Carlos Salinas de Gortari. El nombre se reemplaza por un código anonimizado único.
+
+**Fuente:** Información pública. 
