@@ -37,5 +37,189 @@ for (i in 1:loops){
   print(paste0("Lista descarga de sitio #",i))
 }
 
-# ya con todos los links, me voy anuncio por anuncio, extrayendo lo de interés...
+# asegurarme de no repetir...
+bd <- unique(bd)
+# quitar espacios
+espacio <- function (x) gsub("\\s", "%20", x)
+bd <- as.data.frame(apply(bd,1,espacio))
+
+# ya con todos los links, 
+# me voy a ir anuncio por anuncio, extrayendo lo de interés...
+# hice unas funciones para esto...
+
+trimws <- function (x) gsub("^\\s+|\\s+$", "", x)
+
+extraerZona <- function(p){
+  index <- which(grepl(pattern = "ZONA:", unlist(p)))
+  df <- data.frame("ZONA" = as.character(unlist(p)[index+1]))
+  return(df)
+}
+
+extraerColonia <- function(p){
+  index <- which(grepl(pattern = "COLONIA:",unlist(p)))
+  colonia <- trimws(paste0(unlist(p)[index+1:6], 
+                           collapse = " "))
+  df <- data.frame("COLONIA" = colonia)
+  return(df)
+}
+
+extraerColonia <- function(p){
+  index <- which(grepl(pattern = "COLONIA:",unlist(p)))
+  colonia <- trimws(paste0(unlist(p)[index+1:6], 
+                           collapse = " "))
+  df <- data.frame("COLONIA" = colonia)
+  return(df)
+}
+
+extraerPrecio <- function(p){
+  index <- which(grepl(pattern = '\\$' ,unlist(p)))
+  precio <- trimws(unlist(p)[index])
+  a_pesos <- gsub(pattern = ",", "", precio)
+  a_pesos <- as.numeric(gsub(pattern = '\\$', "", a_pesos))
+  df <- data.frame("PRECIO" = a_pesos)
+  return(df)
+}
+
+extraerRecamaras <- function(p){
+  index <- which(grepl(pattern = "Rec[áa]maras" ,unlist(p)))
+  recamaras <- trimws(unlist(p)[index-1])
+  recamaras <- as.numeric(recamaras)
+  df <- data.frame("RECAMARAS" = recamaras)
+  return(df)
+}
+
+extraerWC <- function(p){
+  index <- which(grepl(pattern = "Ba[nñ]o[\\ss]" ,unlist(p)))
+  wcs <- trimws(unlist(p)[index-1])
+  wcs <- as.numeric(wcs)
+  df <- data.frame("WC" = wcs)
+  if(nrow(df)==0){df<-data.frame("WC" = "ND")}
+  return(df)
+}
+
+extraerTerreno <- function(p){
+  index <- which(grepl(pattern = "Terreno", unlist(f),
+                       ignore.case = TRUE))
+  if(grepl(pattern = "de", 
+           x = unlist(p)[index-1], 
+           ignore.case = TRUE)){
+    index <- index-1
+  }else{}
+  terreno <- trimws(unlist(p)[index-1])
+  terreno <- gsub(pattern = "m²",
+                  replacement = "",
+                  x = terreno)
+  terreno <- as.numeric(terreno)
+  df <- data.frame("TERRENO" = terreno)
+  return(df)
+}
+
+extraerConstruccion <- function(p){
+  index <- which(grepl(pattern = "Construcci[oó]n", unlist(f),
+                       ignore.case = TRUE))
+  if(grepl(pattern = "de", 
+           x = unlist(p)[index-1], 
+           ignore.case = TRUE)){
+    index <- index-1
+  }else{}
+  const <- trimws(unlist(p)[index-1])
+  const <- gsub(pattern = "m²",
+                  replacement = "",
+                  x = const)
+  const <- as.numeric(const)
+  df <- data.frame("CONSTRUCCION" = const)
+  return(df)
+}
+
+extraerPisos <- function(p){
+  index <- which(grepl(pattern = "Planta", unlist(f),
+                       ignore.case = TRUE))
+  if(grepl(pattern = "de", 
+           x = unlist(p)[index-1], 
+           ignore.case = TRUE)){
+    index <- index-1
+  }else{}
+  pisos <- trimws(unlist(p)[index-1])
+  pisos <- gsub(pattern = "m²",
+                replacement = "",
+                x = pisos)
+  pisos <- as.numeric(pisos)
+  df <- data.frame("PISOS" = pisos)
+  return(df)
+}
+
+
+## ---- 
+## Loop 
+n_anuncios <- length(bd[,1])
+bd_elnorte <- NULL
+for(m in 1:n_anuncios){
+  start <- Sys.time()
+  # columna de highlights (zona, colonia, precio)
+  p <- read_html(as.character(bd[m,1])) %>% 
+    html_nodes("#highlights") %>%
+    html_text(trim = TRUE) %>%
+    gsub(pattern = "\\s", "--", .) %>%
+    stringi::stri_split_regex(str = ., 
+                              pattern = "--",
+    )
+  # Construir un data frame con esta información...
+  highlights <- NULL
+  highlights <- cbind.data.frame(
+    extraerZona(p),
+    extraerColonia(p),
+    extraerPrecio(p)
+    )
+  
+  # descripción larga 
+  inf <- read_html(as.character(bd[m,1])) %>% 
+    html_nodes("#infocompleta") %>% html_text(trim = TRUE)
+  
+    # incorporar a hihghlights
+    highlights$INFO_COMPLETA <- inf
+  
+  # descriptores n13 a un lado... 
+  f <- read_html(as.character(bd[m,1])) %>% 
+    html_nodes("#detallep") %>% 
+    html_nodes(".carac_td") %>% 
+    html_nodes("h3") %>% 
+    html_nodes(".ar13gris") %>% 
+    html_text(trim = TRUE) %>% 
+    gsub(pattern = "\\s", "--", .) %>%
+    stringi::stri_split_regex(str = ., 
+                              pattern = "--",
+    )
+  
+  if(length(f)==5){
+      # un data frame normal
+    n_desc <- NULL
+    n_desc <- cbind.data.frame(
+      extraerPisos(f),
+      extraerConstruccion(f),
+      extraerTerreno(f),
+      extraerWC(f),
+      extraerRecamaras(f)
+    ) 
+    
+  }else{
+    n_desc <- data.frame(
+      PISOS = "ND", 
+      CONSTRUCCION = "ND",
+      TERRENO = "ND", 
+      WC = "ND",
+      RECAMARAS = "ND"
+      )
+  }
+      # agregar a highlights...
+      highlights <- cbind.data.frame(highlights, n_desc)
+  
+  bd_elnorte <- rbind.data.frame(bd_elnorte, highlights)
+  
+  end <- Sys.time()
+  dif <- end-start
+  # Mensaje de avance
+  print(paste0("Descargada información de #", m, " en ",round(dif, 4), " segundos"))
+}
+
+
 
