@@ -57,6 +57,7 @@ trimws <- function (x) gsub("^\\s+|\\s+$", "", x)
 extraerZona <- function(p){
   index <- which(grepl(pattern = "ZONA:", unlist(p)))
   df <- data.frame("ZONA" = as.character(unlist(p)[index+1]))
+   if(nrow(df)==0){df <- data.frame("ZONA" = "ND")}
   return(df)
 }
 
@@ -66,6 +67,7 @@ extraerColonia <- function(p){
   colonia <- trimws(paste0(unlist(p)[index+1:6], 
                            collapse = " "))
   df <- data.frame("COLONIA" = colonia)
+   if(nrow(df)==0){df <- data.frame("COLONIA" = "ND")}
   return(df)
 }
 
@@ -76,6 +78,7 @@ extraerPrecio <- function(p){
   a_pesos <- gsub(pattern = ",", "", precio)
   a_pesos <- as.numeric(gsub(pattern = '\\$', "", a_pesos))
   df <- data.frame("PRECIO" = a_pesos)
+  if(nrow(df)==0){df <- data.frame("PRECIO" = "ND")}
   return(df)
 }
 
@@ -114,6 +117,7 @@ extraerTerreno <- function(p){
                   x = terreno)
   terreno <- as.numeric(terreno)
   df <- data.frame("TERRENO" = terreno)
+   if(nrow(df)==0){df <- data.frame("TERRENO" = "ND")}
   return(df)
 }
 
@@ -132,6 +136,7 @@ extraerConstruccion <- function(p){
                   x = const)
   const <- as.numeric(const)
   df <- data.frame("CONSTRUCCION" = const)
+   if(nrow(df)==0){df <- data.frame("CONSTRUCCION" = "ND")}
   return(df)
 }
 
@@ -150,6 +155,7 @@ extraerPisos <- function(p){
                 x = pisos)
   pisos <- as.numeric(pisos)
   df <- data.frame("PISOS" = pisos)
+  if(nrow(df)==0){df <- data.frame("PISOS" = "ND")}
   return(df)
 }
 
@@ -208,6 +214,7 @@ for(m in 1:n_anuncios){
     ) 
     
   }else{
+    n_desc <- NULL
     n_desc <- data.frame(
       PISOS = "ND", 
       CONSTRUCCION = "ND",
