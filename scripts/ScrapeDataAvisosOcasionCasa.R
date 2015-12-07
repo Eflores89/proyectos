@@ -2,6 +2,7 @@
 # versión 1 - 6 Diciembre, 2015
 library(rvest)
 library(eem)
+library(stringi)
 
 # -------
 # página de avisos de ocasión de El Norte
@@ -20,11 +21,14 @@ url <- "http://www.avisosdeocasion.com/Resultados-Inmuebles.aspx?n=venta-casas-n
                                                      regex = "[0-9],[0-9][0-9][0-9]")))
   loops <- ceiling(totales_n/15)
 
+# imprimir para cuando lo haga con source
+print(paste0("Encontrando.. ",loops," casos por descargar"))
+
 # voy a obtener el link directo a cada mini url con una descripción de casa
 b <- NULL
 bd <- NULL
 for (i in 1:loops){
-  url_descargar <- paste0(url,i) 
+  url_descargar <- paste0(url, i) 
   b <- read_html(url_descargar) %>% 
     html_nodes(".tituloresult , .nombre") %>%
     html_nodes("a") %>%
@@ -34,27 +38,29 @@ for (i in 1:loops){
   # store
   bd <- rbind.data.frame(bd, b)  
   # mensaje para el desesperado
-  print(paste0("Lista descarga de sitio #",i))
+  print(paste0("Lista descarga de sitio #", i))
 }
 
-# asegurarme de no repetir...
+# asegurarme de no repetir el mismo url...
 bd <- unique(bd)
-# quitar espacios
+# quitar espacios y poner %20 en su lugar...
 espacio <- function (x) gsub("\\s", "%20", x)
-bd <- as.data.frame(apply(bd,1,espacio))
+bd <- as.data.frame(apply(bd, 1, espacio))
 
-# ya con todos los links, 
-# me voy a ir anuncio por anuncio, extrayendo lo de interés...
+# ya con todos los links, me voy a ir anuncio por anuncio, extrayendo lo de interés...
 # hice unas funciones para esto...
 
+# para quitar trailing spaces
 trimws <- function (x) gsub("^\\s+|\\s+$", "", x)
 
+# para buscar la zona
 extraerZona <- function(p){
   index <- which(grepl(pattern = "ZONA:", unlist(p)))
   df <- data.frame("ZONA" = as.character(unlist(p)[index+1]))
   return(df)
 }
 
+# para buscar la colonia
 extraerColonia <- function(p){
   index <- which(grepl(pattern = "COLONIA:",unlist(p)))
   colonia <- trimws(paste0(unlist(p)[index+1:6], 
@@ -63,14 +69,7 @@ extraerColonia <- function(p){
   return(df)
 }
 
-extraerColonia <- function(p){
-  index <- which(grepl(pattern = "COLONIA:",unlist(p)))
-  colonia <- trimws(paste0(unlist(p)[index+1:6], 
-                           collapse = " "))
-  df <- data.frame("COLONIA" = colonia)
-  return(df)
-}
-
+# para buscar el precio
 extraerPrecio <- function(p){
   index <- which(grepl(pattern = '\\$' ,unlist(p)))
   precio <- trimws(unlist(p)[index])
@@ -80,23 +79,27 @@ extraerPrecio <- function(p){
   return(df)
 }
 
+# para buscar el numero de recamaras
 extraerRecamaras <- function(p){
   index <- which(grepl(pattern = "Rec[áa]maras" ,unlist(p)))
   recamaras <- trimws(unlist(p)[index-1])
   recamaras <- as.numeric(recamaras)
   df <- data.frame("RECAMARAS" = recamaras)
+  if(nrow(df)==0){df <- data.frame("RECAMARAS" = "ND")}
   return(df)
 }
 
+# para buscar el numero de baños
 extraerWC <- function(p){
   index <- which(grepl(pattern = "Ba[nñ]o[\\ss]" ,unlist(p)))
   wcs <- trimws(unlist(p)[index-1])
   wcs <- as.numeric(wcs)
   df <- data.frame("WC" = wcs)
-  if(nrow(df)==0){df<-data.frame("WC" = "ND")}
+  if(nrow(df)==0){df <- data.frame("WC" = "ND")}
   return(df)
 }
 
+# para buscar los metros de terreno
 extraerTerreno <- function(p){
   index <- which(grepl(pattern = "Terreno", unlist(f),
                        ignore.case = TRUE))
@@ -114,6 +117,7 @@ extraerTerreno <- function(p){
   return(df)
 }
 
+# para buscar los metros de construccion
 extraerConstruccion <- function(p){
   index <- which(grepl(pattern = "Construcci[oó]n", unlist(f),
                        ignore.case = TRUE))
@@ -131,6 +135,7 @@ extraerConstruccion <- function(p){
   return(df)
 }
 
+# para buscar el numero de pisos
 extraerPisos <- function(p){
   index <- which(grepl(pattern = "Planta", unlist(f),
                        ignore.case = TRUE))
@@ -150,7 +155,8 @@ extraerPisos <- function(p){
 
 
 ## ---- 
-## Loop 
+# Loop, para cada link de un caso de casa en venta...
+# extraer todos los indicadores y pegar en un data.frame a todos...
 n_anuncios <- length(bd[,1])
 bd_elnorte <- NULL
 for(m in 1:n_anuncios){
