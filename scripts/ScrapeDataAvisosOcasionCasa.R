@@ -176,10 +176,15 @@ extraerPisos <- function(p){
 ## ---- 
 # Loop, para cada link de un caso de casa en venta...
 # extraer todos los indicadores y pegar en un data.frame a todos...
+library(R.utils)
 n_anuncios <- length(bd[,1])
 bd_elnorte <- NULL
 for(m in 1:n_anuncios){
   start <- Sys.time()
+  
+  tryCatch(
+    expr = {
+      evalWithTimeout({
   # columna de highlights (zona, colonia, precio)
   p <- read_html(as.character(bd[m,1])) %>% 
     html_nodes("#highlights") %>%
@@ -257,6 +262,13 @@ for(m in 1:n_anuncios){
   dif <- end-start
   # Mensaje de avance
   print(paste0("Descargada información de #", m, " en ",round(dif, 4), " segundos"))
+  },
+    timeout = 45)},
+      TimeoutException = function(ex) {cat("Timeout. Skipping.\n")},
+      error = function(e) {
+      print("Timeout, skipping")
+      }
+    )
 }
 
 print("Limpiando base...")
@@ -305,9 +317,16 @@ bd_elnorte$NEGOCIABLE <- grepl(pattern = "negociable",
                             x = bd_elnorte$INFO_COMPLETA, ignore.case = TRUE)
 
 print("Generando archivos de resumen y base")
+# si la base es de la media noche o pasa esa hora... 
+if(length(unique(bd_elnorte$FECHA))!=1){
+fecha <- paste0(substring(as.character(Sys.Date()-1),1,4),
+                substring(as.character(Sys.Date()-1),6,7),
+                substring(as.character(Sys.Date()-1),9,11))}
+                else{
 fecha <- paste0(substring(as.character(Sys.Date()),1,4),
                 substring(as.character(Sys.Date()),6,7),
                 substring(as.character(Sys.Date()),9,11))
+                }
 
 bd_resumen <- bd_elnorte[!is.na(bd_elnorte$PRECIO),]
 library(dplyr)
