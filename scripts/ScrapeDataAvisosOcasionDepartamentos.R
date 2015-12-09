@@ -9,9 +9,9 @@ library(inegiR)
 # página de avisos de ocasión de El Norte
 # avisosdeocasion.com / bienes raíces, NL y venta solamente
 # el url base
-url <- "http://www.avisosdeocasion.com/Resultados-Inmuebles.aspx?n=venta-casas-nuevo-leon&PlazaBusqueda=2&Plaza=2&pagina="
+url <- "http://www.avisosdeocasion.com/Resultados-Inmuebles.aspx?n=VENTA-DEPARTAMENTOS&PlazaBusqueda=2&Plaza=2&pagina="
 # y quiero ver la cantidad de anuncios que hay, para ver los loops que voy a necesitar...
-  totales <- read_html(paste0(url,1)) %>% 
+  totales <- read_html("http://www.avisosdeocasion.com/Resultados-Inmuebles.aspx?n=RENTA-CASAS&PlazaBusqueda=2&Plaza=2&pagina=1&idinmueble=5") %>% 
               html_node(".ar13naranja") %>% 
               html_text()
 
@@ -275,8 +275,6 @@ bd_elnorte$COLONIA <- stri_replace_all(bd_elnorte$COLONIA,
 # espacios de más 
 bd_elnorte$COLONIA <- stri_replace_all(bd_elnorte$COLONIA, 
                                        replacement = " ", regex = "  ")
-bd_elnorte$COLONIA <- stri_replace_all(bd_elnorte$COLONIA, 
-                                       replacement = "", regex = "...")
 bd_elnorte$COLONIA <- trimws(bd_elnorte$COLONIA)
 
 # columnas de numeros 

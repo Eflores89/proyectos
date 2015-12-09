@@ -6,24 +6,18 @@ library(stringi)
 library(inegiR)
 
 # -------
-# página de avisos de ocasión de El Norte
-# avisosdeocasion.com / bienes raíces, NL y venta solamente
+# página de inmuebles24.com
 # el url base
-url <- "http://www.avisosdeocasion.com/Resultados-Inmuebles.aspx?n=venta-casas-nuevo-leon&PlazaBusqueda=2&Plaza=2&pagina="
+url <- "http://www.inmuebles24.com/casas-en-renta-en-nuevo-leon.html"
 # y quiero ver la cantidad de anuncios que hay, para ver los loops que voy a necesitar...
-  totales <- read_html(paste0(url,1)) %>% 
-              html_node(".ar13naranja") %>% 
-              html_text()
+  totales <- read_html(paste0(url)) %>% 
+              html_node("#id-resultado-busqueda") %>% 
+              html_text() %>% as.numeric()
 
-  # solamente funciona si hay más de mil entradas...
-  totales_n <- as.numeric(gsub(pattern = ",",
-                               replacement = "",
-                               stringi::stri_extract(totales,
-                                                     regex = "[0-9],[0-9][0-9][0-9]")))
-  loops <- ceiling(totales_n/15)
+  loops <- ceiling(totales/24)
 
 # imprimir para cuando lo haga con source
-print(paste0("Encontrando.. ",totales_n," casos por descargar"))
+print(paste0("Encontrando.. ",totales," casos por descargar"))
 
 # tipo de cambio a usar
 tipocambio <- as.numeric(ultimos(series_tipocambio("61c36253-47f6-c616-034e-7bf43b1aaba4"), n = 0)['Valores'])
@@ -32,13 +26,14 @@ tipocambio <- as.numeric(ultimos(series_tipocambio("61c36253-47f6-c616-034e-7bf4
 b <- NULL
 bd <- NULL
 for (i in 1:loops){
-  url_descargar <- paste0(url, i) 
+  url_descargar <- paste0("http://www.inmuebles24.com/casas-en-renta-en-nuevo-leon-pagina-",i,".html") 
   b <- read_html(url_descargar) %>% 
-    html_nodes(".tituloresult , .nombre") %>%
+    html_nodes(".post-title") %>%
     html_nodes("a") %>%
     html_attr("href")
 
   b <- as.data.frame(unique(b))
+  b <- paste0("http://www.inmuebles24.com", unlist(b))
   # store
   bd <- rbind.data.frame(bd, b)  
   # mensaje para el desesperado
@@ -275,8 +270,6 @@ bd_elnorte$COLONIA <- stri_replace_all(bd_elnorte$COLONIA,
 # espacios de más 
 bd_elnorte$COLONIA <- stri_replace_all(bd_elnorte$COLONIA, 
                                        replacement = " ", regex = "  ")
-bd_elnorte$COLONIA <- stri_replace_all(bd_elnorte$COLONIA, 
-                                       replacement = "", regex = "...")
 bd_elnorte$COLONIA <- trimws(bd_elnorte$COLONIA)
 
 # columnas de numeros 

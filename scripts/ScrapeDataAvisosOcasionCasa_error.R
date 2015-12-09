@@ -1,5 +1,5 @@
 # Script para bajar información de casas en Venta en Mty, NL.
-# versión 1 - 6 Diciembre, 2015
+# versión 2 - 8 Diciembre, 2015
 library(rvest)
 library(eem)
 library(stringi)
@@ -176,87 +176,103 @@ extraerPisos <- function(p){
 ## ---- 
 # Loop, para cada link de un caso de casa en venta...
 # extraer todos los indicadores y pegar en un data.frame a todos...
+library(R.utils)
 n_anuncios <- length(bd[,1])
 bd_elnorte <- NULL
-for(m in 1:n_anuncios){
+for(m in 342:n_anuncios){
   start <- Sys.time()
-  # columna de highlights (zona, colonia, precio)
-  p <- read_html(as.character(bd[m,1])) %>% 
-    html_nodes("#highlights") %>%
-    html_text(trim = TRUE) %>%
-    gsub(pattern = "\\s", "--", .) %>%
-    stringi::stri_split_regex(str = ., 
-                              pattern = "--",
-    )
   
-  # Construir un data frame con esta información...
-  highlights <- NULL
-  highlights <- cbind.data.frame(
-    extraerZona(p),
-    extraerColonia(p),
-    extraerPrecio(p)
-    )
-  print("highlights ... ")
-  # descripción larga 
-  inf <- read_html(as.character(bd[m,1])) %>% 
-    html_nodes("#infocompleta") %>% html_text(trim = TRUE)
-  
-    # incorporar a hihghlights
-    highlights$INFO_COMPLETA <- inf
-  
-  # descriptores n13 a un lado... 
-  f <- read_html(as.character(bd[m,1])) %>% 
-    html_nodes("#detallep") %>% 
-    html_nodes(".carac_td") %>% 
-    html_nodes("h3") %>% 
-    html_nodes(".ar13gris") %>% 
-    html_text(trim = TRUE) %>% 
-    gsub(pattern = "\\s", "--", .) %>%
-    stringi::stri_split_regex(str = ., 
-                              pattern = "--",
-    )
-  print("descriptores ...")
-  if(length(f)==5){
-      # un data frame normal
-    n_desc <- NULL
-    n_desc <- cbind.data.frame(
-      extraerPisos(f),
-      extraerConstruccion(f),
-      extraerTerreno(f),
-      extraerWC(f),
-      extraerRecamaras(f)
-    ) 
-    
-  }else{
-    n_desc <- NULL
-    n_desc <- data.frame(
-      PISOS = "ND", 
-      CONSTRUCCION = "ND",
-      TERRENO = "ND", 
-      WC = "ND",
-      RECAMARAS = "ND"
-      )
-  }
-      print("agregar a highlights...")
-      highlights <- cbind.data.frame(highlights, n_desc)
-
-  # agregar id y fechas
-  i_s1 <- substring(text = bd[m,1], 
-                   (regexpr(bd[m,1],
-                            pattern = "ClaveAviso",
-                            ignore.case = TRUE)[1])+11,
-                   10000)
-  i_s2 <- substring(i_s1,1,regexpr(pattern = "&",text = i_s1)-1)
+  tryCatch(
+    expr = {
+      evalWithTimeout({
+        # columna de highlights (zona, colonia, precio)
+        p <- read_html(as.character(bd[m,1])) %>% 
+          html_nodes("#highlights") %>%
+          html_text(trim = TRUE) %>%
+          gsub(pattern = "\\s", "--", .) %>%
+          stringi::stri_split_regex(str = ., 
+                                    pattern = "--",
+          )
+        
+        
+        
+        # Construir un data frame con esta información...
+        highlights <- NULL
+        highlights <- cbind.data.frame(
+          extraerZona(p),
+          extraerColonia(p),
+          extraerPrecio(p)
+        )
+        print("highlights ... ")
+        # descripción larga 
+        inf <- read_html(as.character(bd[m,1])) %>% 
+          html_nodes("#infocompleta") %>% html_text(trim = TRUE)
+        
+        # incorporar a hihghlights
+        highlights$INFO_COMPLETA <- inf
+        
+        # descriptores n13 a un lado... 
+        f <- read_html(as.character(bd[m,1])) %>% 
+          html_nodes("#detallep") %>% 
+          html_nodes(".carac_td") %>% 
+          html_nodes("h3") %>% 
+          html_nodes(".ar13gris") %>% 
+          html_text(trim = TRUE) %>% 
+          gsub(pattern = "\\s", "--", .) %>%
+          stringi::stri_split_regex(str = ., 
+                                    pattern = "--",
+          )
+        print("descriptores ...")
+        if(length(f)==5){
+          # un data frame normal
+          n_desc <- NULL
+          n_desc <- cbind.data.frame(
+            extraerPisos(f),
+            extraerConstruccion(f),
+            extraerTerreno(f),
+            extraerWC(f),
+            extraerRecamaras(f)
+          ) 
+          
+        }else{
+          n_desc <- NULL
+          n_desc <- data.frame(
+            PISOS = "ND", 
+            CONSTRUCCION = "ND",
+            TERRENO = "ND", 
+            WC = "ND",
+            RECAMARAS = "ND"
+          )
+        }
+        print("agregar a highlights...")
+        highlights <- cbind.data.frame(highlights, n_desc)
+        
+        # agregar id y fechas
+        i_s1 <- substring(text = bd[m,1], 
+                          (regexpr(bd[m,1],
+                                   pattern = "ClaveAviso",
+                                   ignore.case = TRUE)[1])+11,
+                          10000)
+        i_s2 <- substring(i_s1,1,regexpr(pattern = "&",text = i_s1)-1)
         highlights$ID <- as.character(i_s2)
         highlights$HORA <- Sys.time()
         highlights$FECHA <- Sys.Date()
-  
-  bd_elnorte <- rbind.data.frame(bd_elnorte, highlights)
-  
-  end <- Sys.time()
-  dif <- end-start
-  # Mensaje de avance
-  print(paste0("Descargada información de #", m, " en ",round(dif, 4), " segundos"))
+        
+        bd_elnorte <- rbind.data.frame(bd_elnorte, highlights)
+        
+        end <- Sys.time()
+        dif <- end-start
+        # Mensaje de avance
+        print(paste0("Descargada información de #", m, " en ",round(dif, 4), " segundos"))
+        
+      }, 
+                      timeout = 45)
+    }, 
+    TimeoutException = function(ex) {cat("Timeout. Skipping.\n")}, 
+    error = function(e) {
+      print("Try-Catch Skip")
+    }
+  )
 }
 
 print("Limpiando base...")
@@ -305,9 +321,9 @@ bd_elnorte$NEGOCIABLE <- grepl(pattern = "negociable",
                             x = bd_elnorte$INFO_COMPLETA, ignore.case = TRUE)
 
 print("Generando archivos de resumen y base")
-fecha <- paste0(substring(as.character(Sys.Date()),1,4),
-                substring(as.character(Sys.Date()),6,7),
-                substring(as.character(Sys.Date()),9,11))
+fecha <- paste0(substring(as.character(Sys.Date()1),1,4),
+                substring(as.character(Sys.Date()1),6,7),
+                substring(as.character(Sys.Date()1),9,11))
 
 bd_resumen <- bd_elnorte[!is.na(bd_elnorte$PRECIO),]
 library(dplyr)
