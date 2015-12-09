@@ -321,8 +321,7 @@ print("Generando archivos de resumen y base")
 if(length(unique(bd_elnorte$FECHA))!=1){
 fecha <- paste0(substring(as.character(Sys.Date()-1),1,4),
                 substring(as.character(Sys.Date()-1),6,7),
-                substring(as.character(Sys.Date()-1),9,11))}
-                else{
+                substring(as.character(Sys.Date()-1),9,11))}else{
 fecha <- paste0(substring(as.character(Sys.Date()),1,4),
                 substring(as.character(Sys.Date()),6,7),
                 substring(as.character(Sys.Date()),9,11))
