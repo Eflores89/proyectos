@@ -288,7 +288,7 @@ bd_elnorte$COLONIA <- stri_replace_all(bd_elnorte$COLONIA,
 bd_elnorte$COLONIA <- stri_replace_all(bd_elnorte$COLONIA, 
                                        replacement = " ", regex = "  ")
 bd_elnorte$COLONIA <- stri_replace_all(bd_elnorte$COLONIA, 
-                                       replacement = "", regex = "...")
+                                       replacement = "", regex = "[.]{3}$")
 bd_elnorte$COLONIA <- trimws(bd_elnorte$COLONIA)
 
 # columnas de numeros 
