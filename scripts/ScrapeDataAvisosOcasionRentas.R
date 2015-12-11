@@ -1,5 +1,5 @@
 # Script para bajar información de casas en Venta en Mty, NL.
-# versión 1 - 6 Diciembre, 2015
+# versión 2 - 11 Diciembre, 2015
 library(rvest)
 library(eem)
 library(stringi)
