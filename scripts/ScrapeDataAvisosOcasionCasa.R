@@ -318,15 +318,11 @@ bd_elnorte$NEGOCIABLE <- grepl(pattern = "negociable",
 
 print("Generando archivos de resumen y base")
 # si la base es de la media noche o pasa esa hora... 
-if(length(unique(bd_elnorte$FECHA))!=1){
-fecha <- paste0(substring(as.character(Sys.Date()-1),1,4),
-                substring(as.character(Sys.Date()-1),6,7),
-                substring(as.character(Sys.Date()-1),9,11))}else{
-fecha <- paste0(substring(as.character(Sys.Date()),1,4),
-                substring(as.character(Sys.Date()),6,7),
-                substring(as.character(Sys.Date()),9,11))
-                }
-
+if(length(unique(bd_elnorte$FECHA))!=1){lessout <- 1}else{lessout <- 0}
+fecha <- paste0(substring(as.character(Sys.Date()-lessout),1,4),
+                substring(as.character(Sys.Date()-lessout),6,7),
+                substring(as.character(Sys.Date()-lessout),9,11))
+                
 bd_resumen <- bd_elnorte[!is.na(bd_elnorte$PRECIO),]
 library(dplyr)
 resumen <- bd_resumen %>% summarize("PROMEDIO" = mean(PRECIO),
