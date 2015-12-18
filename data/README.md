@@ -1,7 +1,7 @@
 ### Datos usados en proyectos personales y/o en blog www.enelmargen.org
 _______
 ### migrantes
-Se puede encontrar el artículo que acompaña estos datos aquí: http://www.enelmargen.org/2013/06/el-mito-de-la-frontera-descuidada.html
+Se puede encontrar el artículo que acompaña estos datos aquí: http://enelmargen.org/politica/frontera-usa-descuidada/
 
 + `migrantes_agentes` - Agentes fronterizos asignados a frontera sur de E.U., por año.
 + `migrantes_arrestos`- Miles de migrantes arrestados en frontera sur de E.U., por año.
