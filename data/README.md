@@ -1,7 +1,7 @@
 ### Datos usados en proyectos personales y/o en blog www.enelmargen.org
 _______
 ### migrantes
-Se puede encontrar el artículo que acompaña estos datos aquí: http://www.enelmargen.org/2013/06/el-mito-de-la-frontera-descuidada.html
+Se puede encontrar el artículo que acompaña estos datos aquí: http://enelmargen.org/politica/frontera-usa-descuidada/
 
 + `migrantes_agentes` - Agentes fronterizos asignados a frontera sur de E.U., por año.
 + `migrantes_arrestos`- Miles de migrantes arrestados en frontera sur de E.U., por año.
@@ -105,13 +105,13 @@ Gráfica semanal #16, publicada en Reporte Índigo impreso.
 
 **Fuentes:** Mo Ibrahim Foundation, Nobel Foundation, Indira Ghandi Foundation, Gobierno de Venezuela, UNESCO, American Architects Association
 ### militar
-Artículo para EEM: http://www.enelmargen.org/2015/07/datos-de-bajas-de-las-fuerzas-armadas.html.
+Artículo para EEM: http://enelmargen.org/datascience/fuerzas-armadas-bajas/
 
 + `bajas` - Bajas de las Fuerzas Armadas de México por razón y rango. Hasta marzo-2015.
 
 **Fuente:** Secretaría de la Defensa Nacional (SEDENA). (http://www.sedena.gob.mx/transparencia/personal-dado-de-baja-por-diferentes-motivos)
 ### baches
-Artículo para EEM: http://www.enelmargen.org/2015/08/como-combatir-los-baches-en-monterrey.html
+Artículo para EEM: http://enelmargen.org/datascience/baches-mty/
 
 + `baches` - Estadísticas del DENUE por cada bache reportado a traves del Centro de Integración Ciudadana (CIC) en Monterrey.
 
