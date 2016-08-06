@@ -147,3 +147,12 @@ Edad de integrantes de gabinete presidencial, usado en gráfica de Reporte Índi
 + `gabinetes` - Año de nacimiento por integrante de gabinete presidencial desde Carlos Salinas de Gortari. El nombre se reemplaza por un código anonimizado único.
 
 **Fuente:** Información pública. 
+
+### country_clusters
+Clusters de países por votos en Naciones Unidas.
+
++ `country_clusters_issue` - Clusters, por *issue* (tema de voto).
++ `country_clusters` - Clusters, por votos totales.
++ `neighborhood_mx_issue` - "Vecindario" de México (cluster) por *issue*
+
+**Fuente:** Paquete de R `unvotes`. (Ver post en: [http://enelmargen.org/datascience/un-voting-communities/](http://enelmargen.org/datascience/un-voting-communities/)) 
