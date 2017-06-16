@@ -1,0 +1,98 @@
+l2|l2_name
+01|Animals
+02|Meats
+03|Fish and crustaceans
+04|Dairy produce
+05|Animal originated products
+06|Trees and plants
+07|Vegetables
+08|Fruit and nuts
+09|Coffee and spices
+10|Cereals
+11|Food and beverages, primary
+12|Food and beverages, processed
+13|Lac
+14|Vegetable plaiting materials
+15|Animal or vegetable fats and oils
+16|Meat, fish or crustaceans
+17|Sugars
+18|Cocoa
+19|Preparations of cereals, flour, starch or milk
+20|Preparations of vegetables, fruit, nuts
+21|Primary industrial supplies
+22|Processed industrial supplies
+23|Food industries, residues
+24|Tobacco
+25|Salt
+26|Ores, slag and ash
+27|Mineral fuels
+28|Inorganic chemicals
+29|Organic chemicals
+30|Pharmaceutical products
+31|Primary fuels and lubricants
+32|Processed fuels and lubricants
+33|Essential oils and resinoids
+34|Soap, organic surface-active agents
+35|Albuminoidal substances
+36|Explosives
+37|Photographic goods
+38|Chemical products
+39|Plastics
+40|Rubber
+41|Capital goods
+42|Parts and accessories of capital goods
+43|Furskins and artificial fur
+44|Wood and articles of wood
+45|Cork and articles of cork
+46|Manufactures of straw
+47|Pulp of wood or other
+48|Paper and paperboard
+49|Printed books, newspapers
+50|Silk
+51|Transport equipment, passenger motor cars
+52|Transport equipment, other
+53|Parts and accessories of transport equipment
+54|Man-made filaments
+55|Man-made staple fibres
+56|Wadding, felt and nonwovens, special yarns
+57|Carpets and other textile floor coverings
+58|Fabrics
+59|Textile fabrics
+60|Fabrics
+61|Durable consumption goods
+62|Semi-durable consumption goods
+63|Non-durable consumption goods
+64|Footwear
+65|Headgear
+66|Umbrellas
+67|Feathers and down, prepared
+68|Stone, plaster, cement
+69|Ceramic products
+70|Glass and glassware
+71|Natural, cultured pearls
+72|Iron and steel
+73|Iron or steel articles
+74|Copper
+75|Nickel
+76|Aluminium
+78|Lead
+79|Zinc
+80|Tin
+81|Metals
+82|Tools of base metal
+83|Metal
+84|Nuclear reactors
+85|Electrical machinery and equipment
+86|Railway, tramway locomotives, rolling-stock
+87|Vehicles
+88|Aircraft
+89|Ships, boats and floating structures
+90|Optical, measuring instruments
+91|Clocks and watches
+92|Musical instruments
+93|Arms and ammunition
+94|Furniture
+95|Toys, games and sports
+96|Miscellaneous manufactured articles
+97|Works of art
+99|Other commodities
