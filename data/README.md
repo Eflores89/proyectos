@@ -156,3 +156,11 @@ Clusters de países por votos en Naciones Unidas.
 + `neighborhood_mx_issue` - "Vecindario" de México (cluster) por *issue*
 
 **Fuente:** Paquete de R `unvotes`. (Ver post en: [http://enelmargen.org/datascience/un-voting-communities/](http://enelmargen.org/datascience/un-voting-communities/)) 
+
+### tradewatch
+Clasificación manual de códigos HS a 4 y 2 niveles.
+
++ `l2-code-names` - nombres a 2 niveles
++ `l4-code-names` - nombres a 4 niveles
+
+**Fuente:** Harmonized System of Classification y cambios manuales
