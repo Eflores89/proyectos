@@ -164,3 +164,8 @@ Clasificación manual de códigos HS a 4 y 2 niveles.
 + `l4-code-names` - nombres a 4 niveles
 
 **Fuente:** Harmonized System of Classification y cambios manuales
+
+### marketcap
+Lista de 50 empresas públicas más grandes de Estados Unidos por capitalización de mercado (al 14 de Abril del 2018). También hay un par de empresas de tecnología para efectos de un post en enelmargen.org
+
++ market-caps.csv - contiene ticker, capitalización de mercado y si es de tecnología "nueva" (fundadas en los 2000's).
