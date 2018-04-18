@@ -1,4 +1,15 @@
-Top50,Company,Symbol,MCap,NewTech
+Top50,Company,Symbol,Mcap,NewTech
+1,Apple Inc.,AAPL,886.58,1
+1,Alphabet Inc,GOOG,717.99,1
+1,Microsoft Corp.,MSFT,716.7,1
+1,Amazon.com Inc.,AMZN,692.66,1
+1,Berkshire Hathaway,BRK.B,483.49,0
+1,Facebook  Inc.,FB,477.93,1
+1,JPMorgan Chase & Co.,JPM,365.98,0
+1,Johnson & Johnson,JNJ,350.92,0
+1,Exxon Mobil Corp.,XOM,332.36,0
+1,Bank of America Corp,BAC,296.8,0
+1,Visa Inc.,V,272.52,0
 1,Wal-Mart Stores,WMT,255.57,0
 1,Intel Corp.,INTC,242.62,0
 1,Wells Fargo,WFC,239.62,0
